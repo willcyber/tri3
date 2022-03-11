@@ -25,7 +25,7 @@ Welcome to our Health and Wellness Website. This website provides various tools 
     </tr>
     <tr>
         <td>Evan Sanchez</td>
-        <td><a href="">@Deimie</a></td>
+        <td><a href="https://github.com/deimie">@Deimie</a></td>
         <td><a href="">Tasks</a></td>
         <td><a href="">Commits</a></td>
     </tr>
