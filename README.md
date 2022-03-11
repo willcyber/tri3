@@ -13,27 +13,27 @@ Welcome to our Health and Wellness Website. This website provides various tools 
     </tr>
     <tr>
         <td>Alex Do</td>
-        <td><a href="">@AlexD017</a></td>
+        <td><a href="https://github.com/AlexD017">@AlexD017</a></td>
         <td><a href="">Tasks</a></td>
-        <td><a href="">Commits</a></td>
+        <td><a href="https://github.com/willcyber/tri3/commits?author=AlexD017">Commits</a></td>
     </tr>
     <tr>
         <td>James Lee</td>
-        <td><a href="">@JL1080</a></td>
+        <td><a href="https://github.com/JL1080">@JL1080</a></td>
         <td><a href="">Tasks</a></td>
-        <td><a href="">Commits</a></td>
+        <td><a href="https://github.com/willcyber/tri3/commits?author=JL1080">Commits</a></td>
     </tr>
     <tr>
         <td>Evan Sanchez</td>
         <td><a href="https://github.com/deimie">@Deimie</a></td>
         <td><a href="">Tasks</a></td>
-        <td><a href="">Commits</a></td>
+        <td><a href="https://github.com/willcyber/tri3/commits?author=Deimie">Commits</a></td>
     </tr>
      <tr>
         <td>William Wu</td>
-        <td><a href="">@willcyber</a></td>
+        <td><a href="https://github.com/willcyber">@willcyber</a></td>
         <td><a href="">Tasks</a></td>
-        <td><a href="">Commits</a></td>
+        <td><a href="https://github.com/willcyber/tri3/commits?author=willcyber">Commits</a></td>
     </tr> 
   
 </table>
