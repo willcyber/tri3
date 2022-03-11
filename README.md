@@ -31,7 +31,7 @@ Welcome to our Health and Wellness Website. This website provides various tools 
     </tr>
      <tr>
         <td>William Wu</td>
-        <td><a href="">@</a></td>
+        <td><a href="">@willcyber</a></td>
         <td><a href="">Tasks</a></td>
         <td><a href="">Commits</a></td>
     </tr> 
