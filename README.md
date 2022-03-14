@@ -4,10 +4,15 @@ Welcome to our Health and Wellness Website. This website provides various tools 
 ## Project Contributors and Credits
 
 Evan - TO
+
 Daniel - Scrum Master
+
 James - Github Admin
+
 William - Design Manager
+
 Alex - Deployment Manager
+
 
 <table>
     <tr>
