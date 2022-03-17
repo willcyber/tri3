@@ -1,3 +1,5 @@
+{% include navigation.html%}
+
 ## Project Contributors and Credits
 
 <table>
