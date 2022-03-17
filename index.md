@@ -5,9 +5,9 @@
 #### Welcome to our Health and Wellness Website. This website provides various tools for students in their daily lives through school and their extracurricular activities. We want to make sure this website is interactive and friendly to all users that want a tool that improves their wellbeing. Our plan is to include varios features including a planner, timer, scheduler, etc. We want to expand this plan with a sponsor and hopefully create a working website that can launched in the future outside of this Computer Science Principles Class.
 ## Table of Contents
 ### 1. [Contributors](#contributors)
-### 2. [Pair Share Journals](#journals)
-### 3. [Project Ideation](#idea)
-### 4. [Implementation Progress](#progress)
+### 2. [Roles](#roles)
+### 3. [Project Sponser](#project sponser)
+
 ## Contributors <a id="contributors" name="contributors"></a>
 <table>
   <tr>
@@ -47,4 +47,19 @@
 #### William - Design Manager
 #### Alex - Deployment Manager
 ## Project Sponsor
-Our sponsor is a UCSD proffessor who wants a website that is focued on productivity and wellness of his students.
+Our sponsor is a UCSD professor who wants a website that is focued on productivity and wellness of his students.
+
+### Initial Requirements
+* Some type of planner that allows for more friendly user interface
+* Multiple features that can boost productivty for college students 
+* Some programs or components that can manage and check on mental health for the students 
+
+### Tangible Plans 
+* Drag and Drog Planner
+* Standrd Planner with User Input
+* Timer 
+* Mathmatics Tool 
+* Class Scheduler
+
+### Contact Information 
+[Sponser Email](jfmobi@gmail.com)
