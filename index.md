@@ -6,7 +6,7 @@
 ## Table of Contents
 ### 1. [Contributors](#contributors)
 ### 2. [Roles](#roles)
-### 3. [Project Sponsor](#project sponsor)
+### 3. [Project Sponsor](#project-sponsor)
 
 ## Contributors <a id="contributors" name="contributors"></a>
 <table>
