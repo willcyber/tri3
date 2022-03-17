@@ -62,4 +62,4 @@ Our sponsor is a UCSD professor who wants a website that is focued on productivi
 * Class Scheduler
 
 ### Contact Information 
-[Sponser Email](jfmobi@gmail.com)
+Sponser Email: jfmobi@gmail.com
