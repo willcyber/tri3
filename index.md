@@ -2,6 +2,7 @@
 
 {% include navigation.html%}
 
+
 ## [Review Ticket](https://github.com/willcyber/tri3/issues/20#issue-1172813799)
 ## [Scrum Board](https://github.com/willcyber/tri3/projects/1)
 ## Mission Statement
