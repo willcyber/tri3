@@ -1,5 +1,6 @@
 {% include navigation.html%}
 
+
 ## Project Sponsor
 Our sponsor is a UCSD professor who wants a website that is focued on productivity and wellness of his students.
 
