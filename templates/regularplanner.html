@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+{% extends "layout.html" %}
+<html lang="en">
+<head>
+    <!--
+    .dark-mode {
+    background-color: #35363a;
+    color: #b3b3b3;
+    border: 3px white;
+    }
+
+    button.task {
+    margin-top: 5px;
+    font-family: Raleway;
+    padding: 6px 14px;
+    border-radius: 6px;
+    color: #3D3D3D;
+    background: #fff;
+    border: 1px solid white;
+    box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    transition-duration: 0.4s;
+    }
+    button {
+    margin-top: 5px;
+    font-family: Raleway;
+    padding: 6px 14px;
+    border-radius: 6px;
+    color: #3D3D3D;
+    background: #fff;
+    border: 1px solid black;
+    box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    transition-duration: 0.4s;
+    }
+    button:hover {
+    background-color: floralwhite;
+    border: 1px solid black;
+    }
+    .button1:hover {
+    box-shadow: inset 300px 0 0 0 #FFD580;
+    cursor: pointer;
+    color: sandybrown;
+    }
+    .button1:before {
+    transition: all ease;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    opacity: 0;
+    content: "";
+    background-color: sandybrown;
+    }
+
+    .button1:hover:before {
+    transition: .5s all ease;
+    left: 0;
+    right: 0;
+    opacity: 1;
+    z-index: -1;
+
+    }
+    .button2:hover {
+    box-shadow: inset 300px 0 0 0 #ADD8E6;
+    cursor: pointer;
+    color: white;
+    }
+    .button2:before {
+    transition: all ease;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    opacity: 0;
+    content: "";
+    background-color: lightblue;
+    }
+
+    .button2:hover:before {
+    transition: .5s all ease;
+    left: 0;
+    right: 0;
+    opacity: 1;
+    z-index: -1;
+
+    }
+
+
+    .button3:hover {
+    box-shadow: inset 300px 0 0 0 #CBC3E3;
+    cursor: pointer;
+    color: lightpink;
+    }
+    .button3:before {
+    transition: all ease;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    opacity: 0;
+    content: "";
+    background-color: lightpink;
+    }
+
+    .button3:hover:before {
+    transition: .5s all ease;
+    left: 0;
+    right: 0;
+    opacity: 1;
+    z-index: -1;
+
+    }
+    .button4:hover {
+    box-shadow: inset 300px 0 0 0 #87CEEB;
+    cursor: pointer;
+    color: cornflowerblue;
+    }
+    .button4:before {
+    transition: all ease;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    opacity: 0;
+    content: "";
+    background-color: deepskyblue;
+    }
+
+    .button4:hover:before {
+    transition: .5s all ease;
+    left: 0;
+    right: 0;
+    opacity: 1;
+    z-index: -1;
+
+    }
+    h1 {
+    font-family: Forum;
+    font-size: 90px;
+    }
+    table {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    overflow-wrap: anywhere;
+    font-family: Raleway;
+    text-align: center;
+    }
+    th, td{
+    border: 3px solid black;
+    column-rule: 4px dotted rgb(79, 185, 227);
+    padding: 10px;
+    }
+
+    input.text {
+    font-family: Raleway;
+    border: 0;
+    }
+
+    input::placeholder {
+    color: gray;
+    padding-left: 10px;
+    font-size: small;
+    font-family: Raleway;
+    }
+    #top {
+    display: flex;
+    justify-content: space-between;
+    }
+    -->
+    </style>
+    <title>Nighthawk Coding | Planner</title>
+</head>
+
+<div style="margin-left: 50px; margin-right: 50px">
+    <!-- Clock display -->
+    <div id="top" style="text-align: right" >
+        <h1>PLANNER</h1>
+    </div>
+
+    <p>This will be where we will build the month version - <b>Put your main events, deadlines, and important events here.</b></p>
+
+    <!-- button that leads to the repo, can style the button in css above -->
+    <button onclick="toggleMode()">Toggle Dark Mode</button>
+    <button onclick = "RANDOMCOLOR()">Test's Over?</button>
+    <button onclick = "returnColor()">Return</button>
+    <button class="button1" style="background-color: sandybrown; color: orangered " onclick = "AUTUMN()">
+        AUTUMN MODE
+    </button>
+    <button class="button2" style="background-color: ghostwhite; color: dodgerblue" onclick = "WINTER()">
+        WINTER MODE
+    </button>
+    <button class="button3" style="background-color: mediumspringgreen; color:navy" onclick = "SPRING()">
+        SPRING MODE
+    </button>
+    <button class="button4" style="background-color:dodgerblue ; color: yellow" onclick = "SUMMER()">
+        SUMMER MODE
+    </button>
+    <!--    <table>  &lt;!&ndash;  new table that is created for events &ndash;&gt;-->
+    <!--        <tr>   &lt;!&ndash;  table header for 3 seperate events&ndash;&gt;-->
+    <!--            <th bgcolor="#00bfff"> Birthday </th>-->
+    <!--            <th bgcolor="red"> Urgent Task </th>-->
+    <!--            <th bgcolor="yellow"> Exam in this month </th>-->
+    <!--        </tr>-->
+
+    <!--        {% for image in eventimages %} &lt;!&ndash;  for loop for iteration(image  &ndash;&gt;-->
+        <!--            <td>-->
+        <!--                <img class="img-responsive py-3" id=img{{loop.index}} alt="" width="256" height="Auto" src="{{image.base64_GRAY}}" > &lt;!&ndash;  default is gray   &ndash;&gt;-->
+        <!--                &lt;!&ndash; Hack: create button (btn{{loop.index}} to  call java script function-->
+        <!--                       pass index to allow you to toggle images with hidden id's-->
+        <!--                       {{image.base64}}  original image-->
+        <!--                       {{image.base64_GRAY}}  gray scale image-->
+        <!--                    &ndash;&gt;-->
+        <!--                <button style="background-color: mediumspringgreen; border-color: rebeccapurple; color: mediumblue" onclick="changeImage('{{loop.index}}')">Toggle Event!</button>-->
+        <!--                &lt;!&ndash;  changes from gray to color when using button  &ndash;&gt;-->
+        <!--                <p hidden id="img_orig{{loop.index}}">{{image.base64}}</p> &lt;!&ndash;  loops the images   &ndash;&gt;-->
+        <!--                <p hidden id="img_gray{{loop.index}}">{{image.base64_GRAY}}</p>-->
+        <!--            </td>-->
+        <!--        {% endfor %}-->
+    <!--    </table>-->
+    <table>
+
+        <tr>
+            <th colspan="7">October 2021</th>    <!-- html  -->
+        </tr>
+
+        <tr>    <!-- tr is the table row and center aligns them  -->
+            <th>Sun</th>      <!-- The days and aligning in the center th is the table header  -->
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+        </tr>
+
+        {% for j in range(0,5) %}
+            <tr>
+
+                {% if j < 4 %}
+                    {% for i in range(1,8) %} <!-- Code for iteration, table, button: Cell for each day of the month -->
+                        <td>
+                        <p style="text-align: left"> {{j*7+i}} </p>
+                        <p id="show_input{{j}}{{i}}"></p>
+                        <input placeholder="Event" class="text" id="task{{j}}{{i}}" type="text">
+                        <br>
+                        <button  class="task" id="add-task('{{j}}{{i}}')" onclick="display('{{j}}{{i}}')">Add Info</button>
+                        <br>
+                        <button class="task" onclick="remove('{{j}}{{i}}')">Clear Task(s)</button>
+                    {% endfor %}
+                {% endif %}
+
+                {% if j == 4 %} <!-- jinja if statement; prints certain number of cells depending on which row -->
+                    {% for i in range(1,4) %} <!-- Code for iteration, table, button: Cell for each day of the month -->
+                        <td>
+                        <p style="text-align: left"> {{j*7+i}} </p>
+                        <p id="show_input{{j}}{{i}}"></p>
+                        <input placeholder="Event" class="text" id="task{{j}}{{i}}" type="text">
+                        <br>
+                        <button  class="task" onclick="display('{{j}}{{i}}')">Add Info</button>
+                        <br>
+                        <button class="task" onclick="remove('{{j}}{{i}}')">Clear Task(s)</button>
+                    {% endfor %}
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+
+    <table style="width: fit-content">
+        <tr>
+            <td>
+                <input type="checkbox" name="A" class="checkbox" id="firstcondition" value="1">
+                <label for="firstcondition">Are You Satisfied with the Progress?</label>
+            </td>
+
+            <td>
+                <input type="checkbox" name="B" class="checkbox" id="secondcondition" value="1">
+                <label for="secondcondition">Are You Satisfied with the Grades?</label>
+            </td>
+            <td> <button class="task" onclick="myFunction()">Done</button>
+            <td><span id="onlyrow"></span></td>
+        </tr>
+    </table>
+    <!--    <p id = "GOTOSTUDY" style ="font-size: 16px; font-weight: bold;">-->
+    <!--    </p>-->
+
+
+    <script>
+
+
+        function display(id){
+            const task = "task" + id;
+            const show_input = "show_input" + id;
+            alert("Adding " + document.getElementById(task).value + " to Row and Column " + id);
+            localStorage.setItem(task, document.getElementById(task).value);
+            document.getElementById(show_input).innerHTML = localStorage.getItem(task);
+        }
+
+        function keep() {
+            for (let j = 0; j < 5; j++) {
+                for (let i = 1; i < 8; i++) {
+                    task = "task" + j;
+                    task = task + i;
+                    show_input = "show_input" + j;
+                    show_input = show_input + i;
+                    if (typeof localStorage.getItem(task) != null) {
+                        document.getElementById(show_input).innerHTML = localStorage.getItem(task);
+                    }
+                }
+            }
+        }
+
+        function reply_click(clicked_id)
+        {
+            alert(clicked_id);
+        }
+
+        function myFunction() {    //Code for logic gate
+            const x = document.getElementById("firstcondition")
+            const y = document.getElementById("secondcondition")
+
+            if (x.checked || y.checked) {   //or
+                document.getElementById("onlyrow").innerHTML = "<img src=\"/static/assets/ethanimages/vomilton.png\" alt=\"Eh...\" style=\"width: 200px; height: 200px; object-fit: cover\" ></a>"
+            }
+            if (x.checked && y.checked) {   //and
+                document.getElementById("onlyrow").innerHTML = "<img src=\"/static/assets/ethanimages/ankles.png\" alt=\"Sheeeeeesh\" style=\"width: 200px; height: 200px; object-fit: cover\" ></a>"
+            }
+            if (!(x.checked || y.checked)) {    //nor
+                document.getElementById("onlyrow").innerHTML = "<img src=\"/static/assets/ethanimages/anirudhsus.png\" alt=\"Sadge\" style=\"width: 200px; height: 200px; object-fit: cover\" ></a>"
+
+            }
+        }
+
+        function changeImage(ndx) {     <!-- if else statement using the function changeImage   -->
+            if (document.getElementById("img" + ndx).src == document.getElementById('img_orig' + ndx).innerHTML) { <!-- if original switch to gray   -->
+                document.getElementById('img' + ndx).src = document.getElementById('img_gray' + ndx).innerHTML;
+            } else {
+                document.getElementById('img' + ndx).src = document.getElementById('img_orig' + ndx).innerHTML;  <!-- if gray switch to original   -->
+            }
+        }
+
+        function changeColor(color) {
+            document.body.style.background = color;
+        }
+
+        function returnColor() {
+            document.body.style.background = "#faebd7";
+        }
+        function AUTUMN() {
+            changeColor('sandybrown');
+
+        }
+        function WINTER() {
+            changeColor('lightblue');
+        }
+        function SPRING() {
+            changeColor('lightpink');
+        }
+        function SUMMER() {
+            changeColor('deepskyblue');
+        }
+        function RANDOMCOLOR() {
+            let color = '#' + Math.floor(Math.random() * 16777215).toString(16);
+            changeColor(color);
+        }
+
+        function remove(id) {
+            const task = "task" + id;
+            const show_input = "show_input" + id;
+            // clearing web storage
+            localStorage.removeItem(task);
+            localStorage.removeItem(show_input);
+            // clearing cell text
+            document.getElementById(show_input).innerHTML = null;
+        }
+
+        function toggleMode() {
+            var element = document.body;
+            element.classList.toggle("dark-mode");
+        }
+
+    </script>
+</div>
