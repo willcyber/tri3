@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Evan's Create Task</title>
+
+    <style>
+        .header{
+            text-align:center;
+        }
+        .mainBlock{
+            border: solid red 1px;
+            margin-left:20%;
+            margin-right: 20%;
+            margin-top:2%;
+        }
+        .seedShop{
+            border: solid red 1px;
+            margin-left:20%;
+            margin-right: 20%;
+            margin-top:2%;
+            padding-bottom:2%;
+        }
+        td{
+            padding-top:10px;
+            padding-left:10px;
+            padding-right:10px;
+            text-align: center;
+        }
+        .noDisplayTd{
+            display:none;
+            padding-top:10px;
+            padding-left:10px;
+            padding-right:10px;
+            text-align: center;
+        }
+    </style>
+
+    <script type="text/javascript" src="/static/assets/assets/js/evanCreateTask.js"></script>
+
+</head>
+
+{% extends "layout.html" %}
+
+<body>
+{% block body %}
+
+    <div class="mainBlock">
+        <h1 class="header">Garden Simulator</h1>
+
+        <div class="seedShop">
+            <h3 class="header">Seed Shop</h3>
+
+            <table style="margin:auto;">
+                <tr>
+                    <td><button onclick="plantWheat()" id="wheatButton">Plant Wheat</button></td>
+                    <td class="noDisplayTd" id="wheatTime"></td>
+                    <td><button onclick="plantCorn()" id="cornButton">Plant Corn</button></td>
+                    <td class="noDisplayTd" id="cornTime"></td>
+                    <td><button onclick="plantCarrots()" id="carrotButton">Plant Carrots</button></td>
+                    <td class="noDisplayTd" id="carrotTime"></td>
+                    <td><button onclick="plantTomatoes()" id="tomatoButton">Plant Tomatoes</button></td>
+                    <td class="noDisplayTd" id="tomatoTime"></td>
+                </tr>
+                <tr>
+                    <td id="wheatCount">Wheat: 0</td>
+                    <td id="cornCount">Corn: 0</td>
+                    <td id="carrotCount">Carrots: 0</td>
+                    <td id="tomatoCount">Tomatoes: 0</td>
+                </tr>
+            </table>
+
+        </div>
+
+    </div>
+
+{% endblock %}
+</body>
+</html>
+
