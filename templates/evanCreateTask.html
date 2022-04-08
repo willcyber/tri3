@@ -10,16 +10,16 @@
         }
         .mainBlock{
             border: solid red 1px;
-            margin-left:20%;
-            margin-right: 20%;
-            margin-top:2%;
+            width:1500px;
+            height:800px;
+            margin:auto;
+
         }
-        .seedShop{
+        .plantingField{
             border: solid red 1px;
-            margin-left:20%;
-            margin-right: 20%;
-            margin-top:2%;
             padding-bottom:2%;
+            width:1000px;
+            margin:auto;
         }
         td{
             padding-top:10px;
@@ -27,12 +27,12 @@
             padding-right:10px;
             text-align: center;
         }
-        .noDisplayTd{
-            display:none;
-            padding-top:10px;
-            padding-left:10px;
-            padding-right:10px;
-            text-align: center;
+        button{
+            width:100px;
+            height:50px;
+        }
+        table{
+            margin:auto;
         }
     </style>
 
@@ -48,25 +48,34 @@
     <div class="mainBlock">
         <h1 class="header">Garden Simulator</h1>
 
-        <div class="seedShop">
-            <h3 class="header">Seed Shop</h3>
+        <div class="plantingField">
+            <h3 class="header">Planting Field</h3>
 
-            <table style="margin:auto;">
+            <table>
                 <tr>
                     <td><button onclick="plantWheat()" id="wheatButton">Plant Wheat</button></td>
-                    <td class="noDisplayTd" id="wheatTime"></td>
                     <td><button onclick="plantCorn()" id="cornButton">Plant Corn</button></td>
-                    <td class="noDisplayTd" id="cornTime"></td>
                     <td><button onclick="plantCarrots()" id="carrotButton">Plant Carrots</button></td>
-                    <td class="noDisplayTd" id="carrotTime"></td>
                     <td><button onclick="plantTomatoes()" id="tomatoButton">Plant Tomatoes</button></td>
-                    <td class="noDisplayTd" id="tomatoTime"></td>
                 </tr>
                 <tr>
                     <td id="wheatCount">Wheat: 0</td>
                     <td id="cornCount">Corn: 0</td>
                     <td id="carrotCount">Carrots: 0</td>
                     <td id="tomatoCount">Tomatoes: 0</td>
+                </tr>
+            </table>
+
+            <hr>
+
+            <table>
+                <tr>
+                    <td>2x Crop Speed</td>
+                    <td>.5x Crop Speed</td>
+                </tr>
+                <tr>
+                    <td><button onclick="doubleCropSpeed()" id="doubleCropSpeed">Off</button></td>
+                    <td><button onclick="halfCropSpeed()" id="halfCropSpeed">Off</button></td>
                 </tr>
             </table>
 
