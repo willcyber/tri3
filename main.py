@@ -15,6 +15,10 @@ def index():
 def evanCreateTask():
     return render_template("evanCreateTask.html")
 
+@app.route('/alexCreateTask')
+def alexCreateTask():
+    return render_template("alexCreateTask.html")
+
 @app.route('/timer')
 def timer():
     return render_template("timer.html")
