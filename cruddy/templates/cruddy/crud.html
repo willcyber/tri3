@@ -42,8 +42,8 @@
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Password</th>
                                 <th>Phone</th>
+                                <th>Password</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -59,6 +59,7 @@
                                     <td>{{ row['userID'] }}</td>
                                     <td>{{ row['name'] }}</td>
                                     <td>{{ row['email'] }}</td>
+                                    <td>{{ row['phone'] }}</td>
                                     <td>{{ row['password'] | truncate(20) }}</td>
                                     <td>{{ pnf }}</td>
                                 </tr>
