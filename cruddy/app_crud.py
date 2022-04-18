@@ -119,7 +119,7 @@ def delete():
 
 # Search Form
 @app_crud.route('/search/')
-@login_required
+@login_required # this creates a login page for the search page and should lock it. It uses authroize code from app.crud and authorize to lock it with the login page.
 def search():
     """loads form to search Users data"""
     return render_template("search.html")
