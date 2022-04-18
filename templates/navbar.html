@@ -64,13 +64,18 @@
                                         </ul>
                                     </li>
 
-                                        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-                                            <ul class="navbar-nav">
-                                                <li class="nav-item active">
-                                                    <a class="nav-link" href="{{ url_for('crud.crud') }}">CRUD<span class="sr-only"></span></a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                                        <ul class="navbar-nav">
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    CRUD
+                                                </a>
+                                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                                    <li><a class="dropdown-item" href="{{ url_for('crud_api.crud_api') }}">CRUD Async</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
                         </ul>
                     </div>
 
@@ -92,6 +97,23 @@
                     <p style="text-align: center" id="remainingTime"></p>
                 </div>
             </div>
+                            <!-- CRUD Login -->
+                            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link" href="{{ url_for('crud.crud') }}">Login<span class="sr-only"></span></a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- CRUD Sign Up -->
+                            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link" href={{url_for('crud.crud_authorize')}}>Sign Up<span class="sr-only"></span></a>
+                                    </li>
+                                </ul>
+                            </div>
             </ul>
         </div>
         </ul>
