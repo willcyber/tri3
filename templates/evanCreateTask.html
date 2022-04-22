@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Evan's Create Task</title>
+
+    <style>
+        .header{
+            text-align:center;
+        }
+        .mainBlock{
+            border: solid red 1px;
+            width:1500px;
+            height:800px;
+            margin:auto;
+
+        }
+        .plantingField{
+            border: solid red 1px;
+            padding-bottom:2%;
+            width:1000px;
+            margin:auto;
+        }
+        td{
+            padding-top:10px;
+            padding-left:10px;
+            padding-right:10px;
+            text-align: center;
+        }
+        button{
+            width:100px;
+            height:50px;
+        }
+        table{
+            margin:auto;
+        }
+    </style>
+
+    <script type="text/javascript" src="/static/assets/assets/js/evanCreateTask.js"></script>
+
+</head>
+
+{% extends "layout.html" %}
+
+<body>
+{% block body %}
+
+    <div class="mainBlock">
+        <h1 class="header">Garden Simulator</h1>
+
+        <div class="plantingField">
+            <h3 class="header">Planting Field</h3>
+
+            <table>
+                <tr>
+                    <td><button onclick="plantWheat()" id="wheatButton">Plant Wheat</button></td>
+                    <td><button onclick="plantCorn()" id="cornButton">Plant Corn</button></td>
+                    <td><button onclick="plantCarrots()" id="carrotButton">Plant Carrots</button></td>
+                    <td><button onclick="plantTomatoes()" id="tomatoButton">Plant Tomatoes</button></td>
+                </tr>
+                <tr>
+                    <td id="wheatCount">Wheat: 0</td>
+                    <td id="cornCount">Corn: 0</td>
+                    <td id="carrotCount">Carrots: 0</td>
+                    <td id="tomatoCount">Tomatoes: 0</td>
+                </tr>
+            </table>
+
+            <hr>
+
+            <table>
+                <tr>
+                    <td>2x Crop Speed</td>
+                    <td>.5x Crop Speed</td>
+                </tr>
+                <tr>
+                    <td><button onclick="doubleCropSpeed()" id="doubleCropSpeed">Off</button></td>
+                    <td><button onclick="halfCropSpeed()" id="halfCropSpeed">Off</button></td>
+                </tr>
+            </table>
+
+        </div>
+
+    </div>
+
+{% endblock %}
+</body>
+</html>
+

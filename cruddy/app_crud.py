@@ -40,8 +40,7 @@ def crud_login():
     if request.form:
         email = request.form.get("email")
         password = request.form.get("password")
-        phone = request.form.get("phone")
-        if login(email, password, phone):       # zero index [0] used as email is a tuple
+        if login(email, password):       # zero index [0] used as email is a tuple
             return redirect(url_for('crud.crud'))
 
     # if not logged in, show the login page
@@ -55,9 +54,9 @@ def crud_authorize():
         # validation should be in HTML
         user_name = request.form.get("user_name")
         email = request.form.get("email")
+        phone = request.form.get("phone")
         password1 = request.form.get("password1")
         password2 = request.form.get("password1")           # password should be verified
-        phone = request.form.get("phone")
         if authorize(user_name, email, password1, phone):    # zero index [0] used as user_name and email are type tuple
             return redirect(url_for('crud.crud_login'))
     # show the auth user page if the above fails for some reason
@@ -118,44 +117,7 @@ def delete():
 
 
 # Search Form
-
-@login_manager.unauthorized_handler
-def unauthorized():
-    """Redirect unauthorized users to Login page."""
-    return redirect(url_for('crud.crud_login'))
-
-
-# if login url, show phones table only
-@app_crud.route('/login/', methods=["GET", "POST"])
-def login():
-    # obtains form inputs and fulfills login requirements
-    if request.form:
-        email = request.form.get("email")
-        password = request.form.get("password")
-        phone = request.form.get("phone")
-        if login(email, password, phone):       # zero index [0] used as email is a tuple
-            return redirect(url_for('crud.crud'))
-
-    # if not logged in, show the login page
-    return render_template("login.html")
-
-@app_crud.route('/search/', methods=["GET", "POST"])
-def authorize():
-    # check form inputs and creates user
-    if request.form:
-        # validation should be in HTML
-        user_name = request.form.get("user_name")
-        email = request.form.get("email")
-        password1 = request.form.get("password1")
-        password2 = request.form.get("password1")           # password should be verified
-        phone = request.form.get("phone")
-        if authorize(user_name, email, password1, phone):    # zero index [0] used as user_name and email are type tuple
-            return redirect(url_for('crud.crud_login'))
-    # show the auth user page if the above fails for some reason
-    return render_template("search.html")
-
 @app_crud.route('/search/')
-@login_required # this creates a login page for the search page and should lock it. It uses authroize code from app.crud and authorize to lock it with the login page.
 def search():
     """loads form to search Users data"""
     return render_template("search.html")

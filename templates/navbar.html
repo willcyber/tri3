@@ -1,54 +1,84 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/" style="margin-left: 1%">{{basename}}</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <style>
-        .dropdown:hover{
-            display: inline-block;
-        }
-    </style>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav">
-            <!--root menu -->
-            <li class="nav-item active">
-                <a class="nav-link" href="/">Home</a>
-            </li>
-            <a class="nav-link" href="/mainabout">About Us</a>
-            <li class="nav-item dropdown">
+<!DOCTYPE html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="dropdownMenuButton1" type="button" aria-expanded="false">
+</head>
 
-                    Study Organizer
-                </a>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <a class="dropdown-item" href="/search">Drag and Drop Planner</a>
-                    <a class="dropdown-item" href="/regularplanner">Regular Planner</a>
-                    <a class="dropdown-item" href="/translator">Class Organizer</a>
-                </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+    <div class="container-fluid">
+        <div class="btn-group">
+            <a class="navbar-brand" style="text-indent: 8px; font-weight: bold" href="">T3 Planners</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="dropdownMenuButton2" type="button" aria-expanded="false">
-                    Mental Health Wellness
-                </a>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                    <a class="dropdown-item" href="/countries">Countries</a>
-                    <a class="dropdown-item" href="/weather">Weather</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="dropdownMenuButton2" type="button" aria-expanded="false">
-                    Other Useful Tools
-                </a>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                    <a class="dropdown-item" href="/population">Timer</a>
-                    <a class="dropdown-item" href="/currency">Flask Cards</a>
-                    <a class="dropdown-item" href="/Tdb-2">Calculator</a>
-                </div>
-            </li>
+            <div class="collapse navbar-collapse" id="navbarHome">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="/">Home <span class="sr-only"></span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false" id="dropdownMenuButton1" type="button">
+                            Study Organizers
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <a class="dropdown-item" href="/">Weekly Planner</a>
+                            <a class="dropdown-item" href="/">Drag and Drop Planner</a>
+                            <a class="dropdown-item" href="/">Class Organizer</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false" id="dropdownMenuButton1" type="button">
+                            Mental Health Check
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <a class="dropdown-item" href="/timer/">Games and Stuff</a>
+                            <a class="dropdown-item" href="/">Games and Stuff</a>
+                            <a class="dropdown-item" href="/">Games and Stuff</a>
+                        </div>
+                    </li>
 
-<!-- Navbar clock -->
+                    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Other Tools
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                    <li><a class="dropdown-item" href=/timer>Timer</a></li>
+
+                                </ul>
+                            </li>
+
+                            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Create Task
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                            <li><a class="dropdown-item" href="/alexCreateTask">Alex</a></li>
+                                            <li><a class="dropdown-item" href="/evanCreateTask">Evan</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                                        <ul class="navbar-nav">
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    CRUD
+                                                </a>
+                                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                                    <li><a class="dropdown-item" href="{{ url_for('crud_api.crud_api') }}">CRUD Async</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                        </ul>
+                    </div>
+
+            <!-- Navbar clock -->
             <div style="color:white;" class="btn-group">
                 <div class="px-3" style="color:white;">
                     <span id="clock"></span>
@@ -66,8 +96,28 @@
                     <p style="text-align: center" id="remainingTime"></p>
                 </div>
             </div>
+                            <!-- CRUD Login -->
+                            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link" href="{{ url_for('crud.crud') }}">Login<span class="sr-only"></span></a>
+                                    </li>
+                                </ul>
+                            </div>
 
+                            <!-- CRUD Sign Up -->
+                            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link" href={{url_for('crud.crud_authorize')}}>Sign Up<span class="sr-only"></span></a>
+                                    </li>
+                                </ul>
+                            </div>
+            </ul>
         </div>
+        </ul>
+    </div>
+    </div>
     </div>
 </nav>
 
