@@ -16,10 +16,6 @@ def index():
 def timer():
     return render_template("timer.html")
 
-@app.route('/regularplanner')
-def regularplanner():
-    return render_template("regularplanner.html")
-
 @app.errorhandler(404)
 def page_not_found(e):
     # note that we set the 404 status explicitly
