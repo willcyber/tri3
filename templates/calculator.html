@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!-- html is in English and goes left to right -->
+<html lang="en" dir="ltr">
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="/static/assets/assets/css/calculator.css" rel="stylesheet">
+        <script src="/static/assets/assets/js/calculator.js" defer></script>
+        <meta charset="UTF-8">
+        <title>Calculator</title>
+    </head>
+
+    {% include "navbar.html" %}
+
+    <body>
+        <div class="calculator-grid">
+            <div class="output">
+                <div data-previous-operand class="previous-operand"></div> <!-- first input part with the mathematical sign -->
+                <div data-current-operand class="current-operand"></div> <!-- second input part which enter the number after the mathematical sign -->
+            </div>
+            <!-- button layouts for numbers and basic expressions for calculator -->
+            <button data-all-clear class="span-two">AC</button>
+            <button data-delete>DEL</button>
+            <button data-operation>÷</button>
+            <button data-number>1</button>
+            <button data-number>2</button>
+            <button data-number>3</button>
+            <button data-operation>*</button>
+            <button data-number>4</button>
+            <button data-number>5</button>
+            <button data-number>6</button>
+            <button data-operation>+</button>
+            <button data-number>7</button>
+            <button data-number>8</button>
+            <button data-number>9</button>
+            <button data-operation>-</button>
+            <button data-number>.</button>
+            <button data-number>0</button>
+            <button data-equals class="span-two">=</button>
+
+        </div>
+    </body>
+</html>

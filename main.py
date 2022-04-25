@@ -26,6 +26,10 @@ def timer():
 def regularplanner():
     return render_template("regularplanner.html")
 
+@app.route('/calculator')
+def calculator():
+    return render_template("calculator.html")
+
 @app.errorhandler(404)
 def page_not_found(e):
     # note that we set the 404 status explicitly
