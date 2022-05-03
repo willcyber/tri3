@@ -15,8 +15,6 @@ body {
     align-content: center;
     margin: auto;
     min-height: 50vh;
-    box-shadow: 13px 13px 20px #cbced1,
-    -13px -13px 20px #ffffff;
 }
 
 .content {
