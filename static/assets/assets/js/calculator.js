@@ -1,169 +1,81 @@
-class Calculator {
-    constructor(previousOperandTextElement, currentOperandTextElement) {
-        this.previousOperandTextElement = previousOperandTextElement
-        this.currentOperandTextElement = currentOperandTextElement
-        this.clear() //reset the inputs
-    }
+var screen=document.querySelector('#screen');
+var btn=document.querySelectorAll('.btn');
 
-    //clear all different variables
-    clear() {
-        this.currentOperand = ''
-        this.previousOperand = ''
-        this.operation = undefined
-    }
+/*============ For getting the value of btn, Here we use for loop ============*/
+for(item of btn)
+{
+    item.addEventListener('click',(e)=>{
+        btntext=e.target.innerText;
 
-    //clear a single number
-    delete() {
-        this.currentOperand = this.currentOperand.toString().slice(0, -1)
-    }
-
-    //when user clicks on a number to add to the display
-    appendNumber(number) {
-        if (number === '.' && this.currentOperand.includes('.')) return
-        this.currentOperand = this.currentOperand.toString() + number.toString()
-    }
-
-    //when user clicks on any operation button
-    chooseOperation(operation) {
-        if (this.currentOperand === '') return
-        if (this.previousOperand !== '') {
-            this.compute()
+        if(btntext =='×')
+        {
+            btntext= '*';
         }
-        this.operation = operation
-        this.previousOperand = this.currentOperand
-        this.currentOperand = ''
-    }
 
-    //takes values inside calculator and displays the result
-    compute() {
-        let computation
-        const prev = parseFloat(this.previousOperand)
-        const current = parseFloat(this.currentOperand)
-        if (isNaN(prev) || isNaN(current)) return
-        switch (this.operation) {
-            case '+':
-                computation = prev + current
-                break
-            case '-':
-                computation = prev - current
-                break
-            case '*':
-                computation = prev * current
-                break
-            case '÷':
-                computation = prev / current
-                break
-            default:
-                return
+        if(btntext=='÷')
+        {
+            btntext='/';
         }
-        this.currentOperand = computation
-        this.operation = undefined
-        this.previousOperand = ''
-    }
-
-    getDisplayNumber(number) {
-        const stringNumber = number.toString()
-        const integerDigits = parseFloat(stringNumber.split('.')[0])
-        const decimalDigits = stringNumber.split('.')[1]
-        let integerDisplay
-        if (isNaN(integerDigits)) {
-            integerDisplay = ''
-        } else {
-            integerDisplay = integerDigits.toLocaleString('en', { maximumFractionDigits: 0 })
-        }
-        if (decimalDigits != null) {
-            return `${integerDisplay}.${decimalDigits}`
-        } else {
-            return integerDisplay
-        }
-    }
-
-    //update the values inside of the output
-    updateDisplay() {
-        this.currentOperandTextElement.innerText =
-            this.getDisplayNumber(this.currentOperand)
-        if (this.operation != null) {
-            this.previousOperandTextElement.innerText =
-                `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
-        } else {
-            this.previousOperandTextElement.innerText = ''
-        }
-    }
+        screen.value+=btntext;
+    });
 }
 
-<!-- operation buttons works -->
-const numberButtons = document.querySelectorAll('[data-number]')
-const operationButtons = document.querySelectorAll('[data-operation]')
-const equalsButton = document.querySelector('[data-equals]')
-const deleteButton = document.querySelector('[data-delete]')
-const allClearButton = document.querySelector('[data-all-clear]')
-const previousOperandTextElement = document.querySelector('[data-previous-operand]')
-const currentOperandTextElement = document.querySelector('[data-current-operand]')
+function sin()
+{
+    screen.value=Math.sin(screen.value);
+}
 
-const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement)
+function cos()
+{
+    screen.value=Math.cos(screen.value);
+}
 
-//constantly update every time the user click on a button
-numberButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        calculator.appendNumber(button.innerText)
-        calculator.updateDisplay()
-    })
-})
+function tan()
+{
+    screen.value=Math.tan(screen.value);
+}
 
-operationButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        calculator.chooseOperation(button.innerText)
-        calculator.updateDisplay()
-    })
-})
+function pow()
+{
+    screen.value=Math.pow(screen.value,2);
+}
 
-equalsButton.addEventListener('click', button => {
-    calculator.compute()
-    calculator.updateDisplay()
-})
+function sqrt()
+{
+    screen.value=Math.sqrt(screen.value,2);
+}
 
-allClearButton.addEventListener('click', button => {
-    calculator.clear()
-    calculator.updateDisplay()
-})
+function log()
+{
+    screen.value=Math.log(screen.value);
+}
 
-deleteButton.addEventListener('click', button => {
-    calculator.delete()
-    calculator.updateDisplay()
-})
+function pi()
+{
+    screen.value= 3.14159265359;
+}
 
-document.addEventListener('keydown', function (event) {
-    let patternForNumbers = /[0-9]/g;
-    let patternForOperators = /[+\-*\/]/g
-    if (event.key.match(patternForNumbers)) {
-        event.preventDefault();
-        calculator.appendNumber(event.key)
-        calculator.updateDisplay()
-    }
-    if (event.key === '.') {
-        event.preventDefault();
-        calculator.appendNumber(event.key)
-        calculator.updateDisplay()
-    }
-    if (event.key.match(patternForOperators)) {
-        event.preventDefault();
-        calculator.chooseOperation(event.key)
-        calculator.updateDisplay()
-    }
-    if (event.key === 'Enter' || event.key === '=') {
-        event.preventDefault();
-        calculator.compute()
-        calculator.updateDisplay()
-    }
-    if (event.key === "Backspace") {
-        event.preventDefault();
-        calculator.delete()
-        calculator.updateDisplay()
-    }
-    if (event.key == 'Delete') {
-        event.preventDefault();
-        calculator.clear()
-        calculator.updateDisplay()
+function e()
+{
+    screen.value=2.71828182846;
+}
+
+function fact()
+{
+    var i, num, f;
+    f=1
+    num=screen.value;
+    for(i=1; i<=num; i++)
+    {
+        f=f*i;
     }
 
-});
+    i=i-1;
+
+    screen.value=f;
+}
+
+function backspc()
+{
+    screen.value=screen.value.substr(0,screen.value.length-1);
+}
