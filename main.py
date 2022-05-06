@@ -22,6 +22,7 @@ def alexCreateTask():
 def timer():
     return render_template("timer.html")
 
+
 @app.route('/regularplanner')
 def regularplanner():
     return render_template("regularplanner.html")
@@ -37,6 +38,10 @@ def weeklyplanner():
 @app.route('/calculator')
 def calculator():
     return render_template("calculator.html")
+
+@app.route('/conversion')
+def conversion():
+    return render_template("conversion.html")
 
 @app.errorhandler(404)
 def page_not_found(e):
