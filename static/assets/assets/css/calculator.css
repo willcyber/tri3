@@ -7,14 +7,6 @@ body {
     background: linear-gradient(to right, #87CEEB, #CBC3E3);
 }
 
-.click {
-    text-align: center;
-    font-size: 2.3rem;
-    position: fixed;
-    bottom: 100px;
-    left: 52rem;
-}
-
 .title {
     font-size: 2.5rem;
     position: fixed;
