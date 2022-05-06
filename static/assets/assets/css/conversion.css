@@ -46,3 +46,14 @@ body {
 .half {
     line-height: 1.8;
 }
+
+.input {
+    padding: 2px;
+    border-radius: 7px;
+}
+
+.input::placeholder {
+    position: absolute;
+    left: 5px;
+    top: 7px;
+}
