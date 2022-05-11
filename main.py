@@ -31,9 +31,9 @@ def regularplanner():
 def weeklyplanner():
     return render_template("weeklyplanner.html")
 
-# @app.route('/taskplanner')
-# def taskplanner():
-#     return render_template("taskplanner.html")
+@app.route('/taskplanner')
+def taskplanner():
+    return render_template("taskplanner.html")
 
 @app.route('/calculator')
 def calculator():
