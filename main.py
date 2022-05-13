@@ -22,6 +22,13 @@ def alexCreateTask():
 def timer():
     return render_template("timer.html")
 
+@app.route('/rockpaperscissors')
+def rockpaperscissors():
+    return render_template("rockpaperscissors.html")
+
+@app.route('/tictactoe')
+def tictactoe():
+    return render_template("tictactoe.html")
 
 @app.route('/regularplanner')
 def regularplanner():

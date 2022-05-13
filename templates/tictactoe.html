@@ -1,0 +1,202 @@
+<!DOCTYPE HTML>
+<html lang="en">
+{% include "navbar.html" %}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/css/main.css" />
+<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://kit.fontawesome.com/561a0d84b8.js" crossorigin="anonymous"></script>
+<style type="text/css">
+    html {
+        box-sizing: border-box;
+    }
+    *,
+    *:before,
+    *:after {
+        box-sizing: inherit;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 100;
+        min-height: 100vh;
+        user-select: none;
+        align-items: center;
+        background: linear-gradient(to right, #87CEEB, #CBC3E3);
+    }
+
+    .convert-container {
+        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+        text-shadow: 1px 1px white;
+        text-shadow: 0 1px #00000010;
+        padding: 3rem;
+        width: 60%;
+        margin: 5rem auto;
+        display: flex;
+        flex-direction: column;
+        border: 3px;
+        border-radius: 30px;
+        background: linear-gradient(360deg, transparent, #ffffff);
+        min-height: 80vh;
+    }
+
+    .title {
+        margin-top: 0;
+        margin-bottom: 3rem;
+        color: #4d4c4d;
+        font-weight: 400;
+        font-size: 2.5rem;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    .half {
+        line-height: 1.8;
+    }
+
+    .input {
+        padding: 2px;
+        border-radius: 7px;
+    }
+
+    .input::placeholder {
+        position: absolute;
+        left: 5px;
+        top: 7px;
+    }
+
+</style>
+
+
+<head>
+    <title>Playground | Games </title>
+</head>
+
+<style>
+    #console {
+        padding: 3vw;
+    }
+    #console,
+    #panel {
+        margin: auto;
+    }
+
+    #panel {
+        width: clamp(400px, 5vw, 400px);
+        height: clamp(400px, 5vw, 400px);
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+    }
+    .grid {
+        border: solid 2px #00F;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        font-size: 50px;
+        user-select: none;
+        font-weight: 400;
+    }
+    /* CSS Code */
+    /* Heading */
+    h1 {
+        color: orangered;
+        font-size: 45px;
+    }
+
+    /* 3*3 Grid */
+    #b1, #b2, #b3, #b4, #b5,
+    #b6, #b7, #b8, #b9 {
+        width: 80px;
+        height: 52px;
+        margin: auto;
+        border: 1px solid gray;
+        border-radius: 6px;
+        font-size: 30px;
+        text-align: center;
+    }
+
+    /* Reset Button */
+    #but {
+        box-sizing: border-box;
+        width: 95px;
+        height: 40px;
+        border: 1px solid dodgerblue;
+        margin: auto;
+        border-radius: 4px;
+        font-family: Verdana,
+        Geneva, Tahoma, sans-serif;
+
+        background-color: dodgerblue;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    /* Player turn space */
+    #print {
+        font-family: Verdana,
+        Geneva, Tahoma, sans-serif;
+
+        color: dodgerblue;
+        font-size: 20px;
+    }
+
+    /* Main Container */
+    #main {
+        text-align: center;
+    }
+
+    /* Game Instruction Text */
+    #ins {
+        font-family: Verdana,
+        Geneva, Tahoma, sans-serif;
+
+        color: dodgerblue;
+        font-size: 17px;
+    }
+</style>
+
+<body>
+<!- Try building a new body here ->
+    <h1><strong>Tic Tac Toe</strong></h1>
+    <h4 style="color:FireBrick">Bored of studying? Here's a fun minigame that you can play!</h4>
+    <p style="color:white">Classic Tic Tac Toe</p>
+    <button style="color:black; text-align: center" id="restart" onClick="window.location.reload();" hidden>Restart Game</button>
+    <b><h1 style="color:black;" id="message"></h1></b>
+</body>
+
+<div id="console">
+    <div id="panel">
+        <div class="grid" id="0"></div>
+        <div class="grid" id="1"></div>
+        <div class="grid" id="2"></div>
+        <div class="grid" id="3"></div>
+        <div class="grid" id="4"></div>
+        <div class="grid" id="5"></div>
+        <div class="grid" id="6"></div>
+        <div class="grid" id="7"></div>
+        <div class="grid" id="8"></div>
+    </div>
+</div>
+
+<script>
+    var playMarks, winLines, playCount, nextPlayer;
+    var initGame = (reload, winner) => {playMarks = Array(9).fill(null), winLines = [[0, 1, 2],[2,5,8],[6,7,8],[0, 3, 6],[3, 4, 5],[1, 4, 7],[0, 4, 8],[2, 4, 6]], playCount = 0, nextPlayer = localStorage.getItem('nextPlayer') || 'X';
+        ['X','O'].includes(winner) ? (document.getElementById('message').innerText = `Player ${winner} won!`, (document.getElementById('restart').hidden = false)) : reload ? (document.getElementById('message').innerText = `Players draw!`, (document.getElementById('restart').hidden = false)) : null;}
+    var getWinner = (playerLabel) => winLines.some((winLine) => winLine.every((index) => playMarks[index] == playerLabel));
+    document.querySelectorAll('.grid').forEach((grid, index) => {
+        grid.addEventListener('click', (e) => {
+            if (!grid.innerText) { grid.innerText = nextPlayer; playMarks[grid.id] = nextPlayer;
+                if (getWinner('X') || getWinner('O')) initGame(true, nextPlayer);
+                if(++playCount == 9) initGame(true); nextPlayer = nextPlayer == 'X' ? 'O' : 'X'; localStorage.setItem('nextPlayer', nextPlayer);}});});
+    initGame();
+</script>
+
+</html>

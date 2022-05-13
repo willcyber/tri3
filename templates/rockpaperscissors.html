@@ -1,0 +1,184 @@
+<!DOCTYPE HTML>
+<html lang="en">
+{% include "navbar.html" %}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/css/main.css" />
+<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://kit.fontawesome.com/561a0d84b8.js" crossorigin="anonymous"></script>
+<style type="text/css">
+    html {
+        box-sizing: border-box;
+    }
+    *,
+    *:before,
+    *:after {
+        box-sizing: inherit;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 100;
+        min-height: 100vh;
+        user-select: none;
+        align-items: center;
+        background: linear-gradient(to right, #87CEEB, #CBC3E3);
+    }
+
+    .convert-container {
+        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+        text-shadow: 1px 1px white;
+        text-shadow: 0 1px #00000010;
+        padding: 3rem;
+        width: 60%;
+        margin: 5rem auto;
+        display: flex;
+        flex-direction: column;
+        border: 3px;
+        border-radius: 30px;
+        background: linear-gradient(360deg, transparent, #ffffff);
+        min-height: 80vh;
+    }
+
+    .title {
+        margin-top: 0;
+        margin-bottom: 3rem;
+        color: #4d4c4d;
+        font-weight: 400;
+        font-size: 2.5rem;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    .half {
+        line-height: 1.8;
+    }
+
+    .input {
+        padding: 2px;
+        border-radius: 7px;
+    }
+
+    .input::placeholder {
+        position: absolute;
+        left: 5px;
+        top: 7px;
+    }
+
+</style>
+
+
+
+
+<head>
+    <title>Create Task </title>
+
+</head>
+
+<body>
+
+
+<!- Try building a new body here ->
+<h1><strong>Rock Paper Scissors</strong></h1>
+<h4 style="color:FireBrick;">Click either Rock, Paper, or Scissors to start the game!</h4>
+<h4 style="color:FireBrick;">Try to beat the computer and win 5 games!</h4>
+<h2 id="message"></h2>
+<style>
+    input[type=text][width:100%;border:2px solid #aaa;]
+
+</style>
+<button class="options" id="rock">Rock</button>
+<button class="options" id="paper">Paper</button>
+<button class="options" id="scissors">Scissors</button>
+
+<h4 style="color:FireBrick;">Your Score:</h4>
+<font size="+3"><p style="color:blue" id="humanScore">0</p></font>
+
+<h4 style="color:FireBrick;">Computer Score:</h4>
+<font size="+3"><p style="color:blue" id="computerScore">0</p></font>
+
+
+<script>
+    var scoreComputer = document.getElementById("computerScore");
+    var scoreHuman = document.getElementById("humanScore");
+    var rock = document.getElementById("rock");
+    var paper = document.getElementById("paper");
+    var scissors = document.getElementById("scissors");
+    var message = document.getElementById("message");
+
+    const options = document.querySelectorAll(".options");
+    // forEach is my Iteration
+    options.forEach((option) =>
+    {
+        option.addEventListener("click", function()
+        {
+            const compOptions = ["Rock", "Paper", "Scissors"];
+            const compInput = compOptions[Math.floor(3 * Math.random())];
+            const personInput = this.innerText;
+            compareInputs(personInput, compInput);
+        });
+    });
+
+    function compareInputs(personInput, compInput) {
+        const currentMatch = `${personInput} vs ${compInput}`;
+        // If player and computer Tie
+        if (personInput == compInput) {
+            alert(`${currentMatch} is a Tie`);
+            return;
+        }
+        // If player selects Rock
+        else if (personInput == "Rock" && compInput == "Scissors") {
+                alert(`${currentMatch} = You Win`);
+                scoreHuman.innerHTML = parseInt(scoreHuman.innerHTML)+1;
+            }
+
+        // If player selects Paper
+        else if (personInput == "Paper" && compInput == "Rock") {
+                alert(`${currentMatch} = You Win`);
+                scoreHuman.innerHTML = parseInt(scoreHuman.innerHTML)+1;
+            }
+
+        // If player selects Scissors
+        else if (personInput == "Scissors" && compInput == "Paper") {
+                alert(`${currentMatch} = You Win`);
+                scoreHuman.innerHTML = parseInt(scoreHuman.innerHTML)+1;
+            }
+
+        else {
+            alert(`${currentMatch} = Computer Wins`);
+            scoreComputer.innerHTML = parseInt(scoreComputer.innerHTML)+1;
+        }
+
+        winCheck()
+
+    }
+
+    function winCheck() {
+        if (scoreHuman.innerHTML == '5') {
+            rock.style.display = "none"
+            paper.style.display = "none"
+            scissors.style.display = "none"
+            message.innerHTML = "<span style='color: green;font-size:30px;'>You won " + scoreHuman.innerHTML + " - " + scoreComputer.innerText
+            scoreHuman.innerHTML = 0;
+            scoreComputer.innerHTML = 0;
+        } else if (scoreComputer.innerHTML == '5') {
+            rock.style.display = "none"
+            paper.style.display = "none"
+            scissors.style.display = "none"
+            message.innerHTML = "<span style='color: red;font-size:30px;'>You lost " + scoreHuman.innerHTML + " - " + scoreComputer.innerText
+            scoreHuman.innerHTML = 0;
+            scoreComputer.innerHTML = 0;
+        } else {
+            alert(`Continue playing until someone reaches 5 wins!`);
+        }
+    }
+</script>
+
+</body>
+
+</html>
