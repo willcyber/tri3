@@ -1,0 +1,47 @@
+.mainTime{
+    text-align: center;
+    font-size:100px;
+}
+table{
+    margin:auto;
+}
+td{
+    padding:10px;
+}
+.buttonTimer{
+    border: black solid 1px;
+    border-radius:10px;
+    font-size:25px;
+}
+.subTimer{
+    margin:auto;
+    text-align:center;
+    border: black solid 1px;
+    width:70%;
+    height:10%;
+    padding:10px;
+}
+h3{
+    display:inline;
+}
+.fa-square-xmark{
+    float:right;
+}
+.fa-square-xmark:hover{
+    color:red;
+}
+.fa-circle-plus{
+    padding:3px;
+}
+.fa-circle-plus:hover{
+
+}
+.noDisplay{
+    display:none;
+}
+.fa-moon{
+    color:gray;
+}
+.fa-sun{
+   color:yellow;
+}

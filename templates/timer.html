@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Health & Wellness | Timer</title>
     <meta charset="UTF-8">
-    <title>Timer</title>
+    <script type="text/javascript" src="/static/assets/js/timer.js"></script> <!-- Import JS -->
+    <link rel="stylesheet" href="{{url_for('static', filename='/assets/css/timer.css') }}"> <!-- Import CSS -->
+
+
 </head>
 
 {% extends "layout.html" %}
@@ -10,8 +14,41 @@
 <body>
 {% block body %}
 
+    <!-- Shows current hour, minute, and second -->
+    <div class="mainTime">
+        <span id="currentTime"></span>
+        <i id="pm" class="fa-solid fa-moon"></i>
+        <i id="am" class="fa-solid fa-sun"></i>
+    </div>
 
+    <!-- Buttons that open timer, alarm, and stopwatch -->
+    <table>
+        <tr>
+            <td><button class="buttonTimer" onclick="showAlarm()">Alarm</button></td>
+            <td><button class="buttonTimer" onclick="showTimer()">Timer</button></td>
+            <td><button class="buttonTimer" onclick="showStopwatch()">Stopwatch</button></td>
+
+        </tr>
+    </table>
+
+    <!-- Alarm -->
+    <div class="subTimer noDisplay" id="alarm">
+        <h3> New Alarm </h3>
+        <i class="fa-solid fa-circle-plus fa-xl"></i>
+        <i class="fa-solid fa-square-xmark fa-2xl" onclick="closeSubTimers()"></i>
+    </div>
+
+    <!-- Timer -->
+    <div class="subTimer noDisplay" id="timer">
+        <i class="fa-solid fa-square-xmark fa-2xl" onclick="closeSubTimers()"></i>
+    </div>
+
+    <!-- Stopwatch -->
+    <div class="subTimer noDisplay" id="stopwatch">
+        <i class="fa-solid fa-square-xmark fa-2xl" onclick="closeSubTimers()"></i>
+    </div>
 
 {% endblock %}
 </body>
 </html>
+
