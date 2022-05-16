@@ -1,5 +1,6 @@
 from flask import render_template
 from __init__ import app
+from flask import request
 from cruddy.app_crud import app_crud
 from cruddy.app_crud_api import app_crud_api
 
@@ -53,6 +54,15 @@ def calculator():
 @app.route('/conversion')
 def conversion():
     return render_template("conversion.html")
+
+@app.route('/feedback/', methods=['GET', 'POST'])
+def feedback():
+    if request.form:
+        input = request.form.get("feed1")
+        name = request.form.get("feed2")
+        if len(input) != 0:  # input field has content
+            return render_template("feedback.html", input=input, name=name)
+    return render_template("feedback.html")
 
 @app.errorhandler(404)
 def page_not_found(e):
