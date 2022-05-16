@@ -42,6 +42,10 @@ def weeklyplanner():
 def taskplanner():
     return render_template("taskplanner.html")
 
+@app.route('/draganddrop')
+def draganddrop():
+    return render_template("draganddrop.html")
+
 @app.route('/calculator')
 def calculator():
     return render_template("calculator.html")
