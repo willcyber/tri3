@@ -1,5 +1,10 @@
 <!DOCTYPE HTML>
 <html>
+{% include "navbar.html" %}
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://kit.fontawesome.com/561a0d84b8.js" crossorigin="anonymous"></script>
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Drag and Drop Planner</title>
@@ -57,469 +62,275 @@
 
 
 </style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CALENDAR</title>
 
-<script>
-    // Make the DIV element draggable:
-    dragElement(document.getElementById("mydiv"));
-    dragElement(document.getElementById("mydiv2"));
+    <style>
+        table, th, td {
+            border: 1px solid blue;
+            border-collapse: collapse;
+            margin-left: auto;
+            margin-right: auto;
 
-    function dragElement(elmnt) {
-        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-        if (document.getElementById(elmnt.id + "header")) {
-            // if present, the header is where you move the DIV from:
-            document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-        } else {
-            // otherwise, move the DIV from anywhere inside the DIV:
-            elmnt.onmousedown = dragMouseDown;
+        }
+        th{
+            background-color: #b8b5e0;
+            text-align: center;
+            padding: 10px
+        }
+        th, td{
+            padding: 2px
         }
 
-        function dragMouseDown(e) {
-            e = e || window.event;
-            e.preventDefault();
-            // get the mouse cursor position at startup:
-            pos3 = e.clientX;
-            pos4 = e.clientY;
-            document.onmouseup = closeDragElement;
-            // call a function whenever the cursor moves:
-            document.onmousemove = elementDrag;
-        }
+    </style>
 
-        function elementDrag(e) {
-            e = e || window.event;
-            e.preventDefault();
-            // calculate the new cursor position:
-            pos1 = pos3 - e.clientX;
-            pos2 = pos4 - e.clientY;
-            pos3 = e.clientX;
-            pos4 = e.clientY;
-            // set the element's new position:
-            elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-            elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-        }
-
-        function closeDragElement() {
-            // stop moving when mouse button is released:
-            document.onmouseup = null;
-            document.onmousemove = null;
-        }
-    }
-</script>
-</body>
-<style>
-    p {
-        font-family: Raleway;
-    }
-    label {
-        font-family: Raleway;
-    }
-    body {
-        background-color: antiquewhite;
-        color: black;
-    }
-
-    .dark-mode {
-        background-color: #35363a;
-        color: #b3b3b3;
-        border: 3px white;
-    }
-    button.task {
-        margin-top: 5px;
-        font-family: Raleway;
-        padding: 6px 14px;
-        border-radius: 6px;
-        color: #3D3D3D;
-        background: #fff;
-        border: 1px solid white;
-        box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1);
-        user-select: none;
-        -webkit-user-select: none;
-        touch-action: manipulation;
-        transition-duration: 0.4s;
-    }
-    button {
-        margin-top: 5px;
-        font-family: Raleway;
-        padding: 6px 14px;
-        border-radius: 6px;
-        color: #3D3D3D;
-        background: #fff;
-        border: 1px solid black;
-        box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1);
-        user-select: none;
-        -webkit-user-select: none;
-        touch-action: manipulation;
-        transition-duration: 0.4s;
-    }
-    button:hover {
-        background-color: floralwhite;
-        border: 1px solid black;
-    }
-    table {
-        margin-top: 20px;
-        margin-bottom: 20px;
-        width: fit-content;
-        overflow-wrap: anywhere;
-        font-family: Raleway;
-        text-align: center;
-    }
-    .button1:hover {
-        box-shadow: inset 300px 0 0 0 #FFD580;
-        cursor: pointer;
-        color: sandybrown;
-    }
-    .button1:before {
-        transition: all ease;
-        position: absolute;
-        top: 0;
-        left: 50%;
-        right: 50%;
-        bottom: 0;
-        opacity: 0;
-        content: "";
-        background-color: sandybrown;
-    }
-
-    .button1:hover:before {
-        transition: .5s all ease;
-        left: 0;
-        right: 0;
-        opacity: 1;
-        z-index: -1;
-
-    }
-    .button2:hover {
-        box-shadow: inset 300px 0 0 0 #ADD8E6;
-        cursor: pointer;
-        color: white;
-    }
-    .button2:before {
-        transition: all ease;
-        position: absolute;
-        top: 0;
-        left: 50%;
-        right: 50%;
-        bottom: 0;
-        opacity: 0;
-        content: "";
-        background-color: lightblue;
-    }
-
-    .button2:hover:before {
-        transition: .5s all ease;
-        left: 0;
-        right: 0;
-        opacity: 1;
-        z-index: -1;
-
-    }
-    .button3:hover {
-        box-shadow: inset 300px 0 0 0 #CBC3E3;
-        cursor: pointer;
-        color: lightpink;
-    }
-    .button3:before {
-        transition: all ease;
-        position: absolute;
-        top: 0;
-        left: 50%;
-        right: 50%;
-        bottom: 0;
-        opacity: 0;
-        content: "";
-        background-color: lightpink;
-    }
-
-    .button3:hover:before {
-        transition: .5s all ease;
-        left: 0;
-        right: 0;
-        opacity: 1;
-        z-index: -1;
-
-    }
-    .button4:hover {
-        box-shadow: inset 300px 0 0 0 #87CEEB;
-        cursor: pointer;
-        color: cornflowerblue;
-    }
-    .button4:before {
-        transition: all ease;
-        position: absolute;
-        top: 0;
-        left: 50%;
-        right: 50%;
-        bottom: 0;
-        opacity: 0;
-        content: "";
-        background-color: deepskyblue;
-    }
-
-    .button4:hover:before {
-        transition: .5s all ease;
-        left: 0;
-        right: 0;
-        opacity: 1;
-        z-index: -1;
-
-    }
-    h1 {
-        font-family: Forum;
-        font-size: 90px;
-    }
-    table {
-        margin-top: 20px;
-        margin-bottom: 20px;
-        width: 100%;
-        overflow-wrap: anywhere;
-        font-family: Raleway;
-        text-align: center;
-    }
-    th, td{
-        border: 3px solid black;
-        column-rule: 4px dotted rgb(79, 185, 227);
-        padding: 10px;
-    }
-
-    input.text {
-        font-family: Raleway;
-        border: 0;
-    }
-
-    input::placeholder {
-        color: gray;
-        padding-left: 10px;
-        font-size: small;
-        font-family: Raleway;
-    }
-    #top {
-        display: flex;
-        justify-content: space-between;
-    }
-    ul {
-        margin-left: -40px;
-        list-style-position: inside;
-    }
-    button.rainbow {
-        background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);
-        background-color:#191919;
-        border-radius:5px;
-    }
-    button.rainbow:hover {
-        animation:slidebg 10s linear infinite;
-    }
-    @keyframes slidebg {
-        to {
-            background-position:10vw;
-        }
-    }
-    button.dark {
-        background-color: #363d47;
-        color: #9daf9b;
-    }
-</style>
-<title>Nighthawk Coding | Drag and Drop Planner</title>
 </head>
+<body>
+<table>
+    <tr>
+        </head>
 
-<style>
-    h2 {text-align: center}
-</style>
-<div style="margin-left: 25px; margin-right: 25px">
-    <!-- Clock display -->
-        <h2>DRAG AND DROP PLANNER</h2>
+        <body onload="check()">
+        <div style="margin-left: 50px; margin-right: 50px">
 
-
-    <p>This will be where we will build the month version - <b>Put your main events, deadlines, and important events here.</b></p>
-
-    <!-- button that leads to the repo, can style the button in css above -->
-    <div id="top" style="text-align: right" >
-        <div>
-            <button class="rainbow" onclick = "RANDOMCOLOR()">RANDOM</button>
-            <button class="dark" onclick="darkMode()">DARK MODE</button>
-            <button class="button1" style="background-color: sandybrown; color: orangered " onclick = "AUTUMN()">AUTUMN</button>
-            <button class="button2" style="background-color: ghostwhite; color: dodgerblue" onclick = "WINTER()">WINTER</button>
-            <button class="button3" style="background-color: mediumspringgreen; color:navy" onclick = "SPRING()">SPRING</button>
-            <button class="button4" style="background-color:dodgerblue ; color: yellow" onclick = "SUMMER()">SUMMER</button>
-            <button onclick = "returnColor()">RETURN</button>
-        </div>
-    </div>
-
-
-    <table>
-
-        <tr>
-            <th colspan="7">May 2022</th>    <!-- html  -->
-        </tr>
-
-        <tr>    <!-- tr is the table row and center aligns them  -->
-            <th>Sun</th>      <!-- The days and aligning in the center th is the table header  -->
-            <th>Mon</th>
-            <th>Tue</th>
-            <th>Wed</th>
-            <th>Thu</th>
-            <th>Fri</th>
-            <th>Sat</th>
-        </tr>
-
-        {% for j in range(0,5) %}
-            <tr>
-
-                {% if j < 4 %}
-                    {% for i in range(1,8) %} <!-- Code for iteration, table, button: Cell for each day of the month -->
-                        <td>
-                        <p style="text-align: left"> {{j*7+i}} </p>
-                        <ul id="show_input.{{j}}{{i}}"></ul>
-                        <input placeholder="Event" class="text" id="task.{{j}}{{i}}" type="text">
-                        <br>
-                        <!--                <p style="text-align: left"> {{j*7+i}} </p>-->
-                        <!--                <p id="show_input{{j}}{{i}}"></p>-->
-                        <!--                <input placeholder="Event" class="text" id="task{{j}}{{i}}" type="text">-->
-                        <!--                <button id="add_task.{{j}}{{i}}" class="task" id="add-task('{{j}}{{i}}')" onclick="display('{{j}}{{i}}')">Add Info</button>-->
-                        <!--                <br>-->
+            <table>
+                <tr>    <!-- tr is the table row and center aligns them  -->
+                    <th>Sunday</th>      <!-- The days and aligning in the center th is the table header  -->
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thursday</th>
+                    <th>Friday</th>
+                    <th>Saturday</th>
+                </tr>
+                <tr>
+                    {% for i in range(1, 8) %}
+                        <td id="cell.{{i}}">
+                            <ol id="show_input.{{i}}">
+                            </ol>
+                            <input placeholder="Assignment" type="text" class="text" id="task.{{i}}">
+                            <button class="task" id="add_task.{{i}}" onclick="display('{{i}}')">Click To Add Assignment</button>
+                            <br>
+                            <button class="task" onclick="remove('{{i}}')">Click To Clear Assignment(s)</button>
+                        </td>
                     {% endfor %}
-                {% endif %}
+                </tr>
+            </table>
 
-                {% if j == 4 %} <!-- jinja if statement; prints certain number of cells depending on which row -->
-                    {% for i in range(1,3) %} <!-- Code for iteration, table, button: Cell for each day of the month -->
-                        <td>
-                        <p style="text-align: left"> {{j*7+i}} </p>
-                        <p id="show_input{{j}}{{i}}"></p>
-                        <input placeholder="Event" class="text" id="task{{j}}{{i}}" type="text">
-                    {% endfor %}
-                {% endif %}
-            </tr>
-        {% endfor %}
-    </table>
-
-    <!--{#    <table style="width: fit-content">#}-->
-    <!--{#        <tr>#}-->
-    <!--{#            <td>#}-->
-    <!--{#                <input type="checkbox" name="A" class="checkbox" id="firstcondition" value="1">#}-->
-    <!--{#                <label for="firstcondition">Are You Satisfied with the Progress?</label>#}-->
-    <!--{#            </td>#}-->
-    <!--{##}-->
-    <!--{#            <td>#}-->
-    <!--{#                <input type="checkbox" name="B" class="checkbox" id="secondcondition" value="1">#}-->
-    <!--{#                <label for="secondcondition">Are You Satisfied with the Grades?</label>#}-->
-    <!--{#            </td>#}-->
-    <!--{#            <td> <button class="task" onclick="myFunction()">Done</button>#}-->
-    <!--{#            <td><span id="onlyrow"></span></td>#}-->
-    <!--{#        </tr>#}-->
-    <!--{#    </table>#}-->
-    <!--    <p id = "GOTOSTUDY" style ="font-size: 16px; font-weight: bold;">-->
-    <!--    </p>-->
+            <br>
 
 
-    <script>
+            <button onclick="https://www.plantservices.com/articles/2019/palmers-planning-corner-just-the-facts-for-planning-and-scheduling/" id="Cool">Get an interesting fact!</button>
 
 
-        function display(id) {
-            let task = "task." + id;
-            const show_input = "show_input." + id;
-            localStorage.setItem(task, document.getElementById(task).value); // stores value in session
-            const TASK = localStorage.getItem(task); // a new variable for the list
-            const list = document.createElement('list');
-            list.innerHTML = "<li>" + TASK + "</li>"; // list
-            document.getElementById(show_input).appendChild(list); // adding to list
-            localStorage.setItem(show_input, document.getElementById(show_input).innerHTML)
-            document.getElementById(task).value = null; // clears input box, QOL update
-        }
+            <script>
+                // converting string (task input) to hex
+                function conversion(i) {
+                    const show_input = "show_input." + i;
+                    const tasks_text = show_input + ".text"
+                    // localStorage.setItem(task, document.getElementById(task).value);
+                    localStorage.setItem(tasks_text, document.getElementById(show_input).innerText)
+                    let text = localStorage.getItem(tasks_text);
+                    let short = text.slice(-4) // last 4 characters of the task list
+                    let arr1 = [];
+                    for (let n = 0, l = short.length; n < l; n ++)
+                    {
+                        let hex = Number(short.charCodeAt(n)).toString(16); // algorithm from stack overflow, thanks
+                        arr1.push(hex);
+                    }
+                    return "#" + arr1.join('')
+                }
 
-        for (let j = 0; j < 5; j++) {
-            for (let i = 1; i < 8; i++) {
-                let task = "task." + j;
-                task = task + i;
-                button = button + i;
-                document.getElementById(task)
-                    .addEventListener("keyup", function (event) {
-                        event.preventDefault();
-                        if (event.keyCode === 13) { // maybe it's deprecated, but it works
-                            document.getElementById(button).click(); // button runs the display() code
-                        }
-                    });
-            }
-        }
 
-        function keep() {
-            for (let j = 0; j < 5; j++) {
+                // displaying user input for their tasks
+                function display(i) {
+                    let task = "task." + i;
+                    // let task2 = "task." + id;
+                    const show_input = "show_input." + i;
+                    const cell = "cell." + i;
+                    localStorage.setItem(task, document.getElementById(task).value); // stores value in session
+                    const TASK = localStorage.getItem(task); // a new variable for the list
+                    const list = document.createElement('list');
+                    list.innerHTML = "<li>" + TASK + "</li>"; // list
+                    document.getElementById(show_input).appendChild(list); // adding to list
+                    localStorage.setItem(show_input, document.getElementById(show_input).innerHTML)
+
+                    // whether or not checkbox is toggled, and uses color based on result
+
+                    let checked = document.getElementById("color").checked;
+                    if ( checked ) {
+                        colorChange(i);
+                        localStorage.setItem("checkbox", "true");
+                    } else {
+                        document.getElementById(cell).style.backgroundColor = null;
+                        localStorage.setItem("checkbox", "false");
+                    }
+                    document.getElementById(task).value = null; // clears input box, QOL update
+                }
+
+                // enter key
                 for (let i = 1; i < 8; i++) {
-                    task = "task." + j;
-                    task = task + i;
-                    show_input = "show_input." + j;
-                    show_input = show_input + i;
-                    if (typeof localStorage.getItem(task) != null) {
-                        document.getElementById(show_input).innerHTML = localStorage.getItem(show_input);
+                    const task = "task." + i;
+                    const button = "add_task." + i;
+                    document.getElementById(task)
+                        .addEventListener("keyup", function (event) {
+                            event.preventDefault();
+                            if (event.keyCode === 13) { // maybe it's deprecated, but it works
+                                document.getElementById(button).click(); // button runs the display() code
+                            }
+                        });
+                }
+
+                // checks stored web memory for tasks from a prev. session
+                function check() {
+                    for (let i = 1; i < 8; i++) {
+                        const task = "task." + i;
+                        const show_input = "show_input." + i;
+                        if (typeof localStorage.getItem(task) !== null) {
+                            // let tasks = "'" + str + "'".split(" "); // I really thought I needed the text...
+                            document.getElementById(show_input).innerHTML = localStorage.getItem(show_input);
+                            // alert(str.match(/.*?[\.\s]+?/g)) // nah bruh
+                        }
+                        // let cellColor = cell + "." + "color";
+                        // if ( typeof localStorage.getItem(cellColor) !== "#" ) {
+                        //     colorChange(i)
+                        // }
+                        // let checked = document.getElementById("color").checked
+                        if (localStorage.getItem("checkbox")) {
+                            document.getElementById("color").checked = true;
+                            colorChange(i);
+                        }
                     }
                 }
-            }
-        }
 
-        function reply_click(clicked_id)
+                // clears task list and web storage
+                function remove(i) {
+                    const task = "task." + i;
+                    const show_input = "show_input." + i;
+                    let cell = "cell." + i;
+                    // clearing web storage
+                    localStorage.removeItem(task);
+                    localStorage.removeItem(show_input);
+                    // clearing cell text
+                    document.getElementById(show_input).innerHTML = null;
+                    if ( typeof document.getElementById(cell).style.backgroundColor !== null ) { // checking for color
+                        document.getElementById(cell).style.backgroundColor = null // removing color
+                    }
+
+                }
+
+            </script>
+        </div>
+        </body>
+    </tr>
+
+</table>
+
+<script>
+
+    function reply_click(clicked_id)
+    {
+        alert(clicked_id);
+    }
+</script>
+
+<script>
+    // converting string (task input) to hex
+    function conversion(i) {
+        const show_input = "show_input." + i;
+        const tasks_text = show_input + ".text"
+        // localStorage.setItem(task, document.getElementById(task).value);
+        localStorage.setItem(tasks_text, document.getElementById(show_input).innerText)
+        let text = localStorage.getItem(tasks_text);
+        let short = text.slice(-4) // last 4 characters of the task list
+        let arr1 = [];
+        for (let n = 0, l = short.length; n < l; n ++)
         {
-            alert(clicked_id);
+            let hex = Number(short.charCodeAt(n)).toString(16); // algorithm from stack overflow, thanks
+            arr1.push(hex);
         }
+        return "#" + arr1.join('')
+    }
 
-        function myFunction() {    //Code for logic gate
-            const x = document.getElementById("firstcondition")
-            const y = document.getElementById("secondcondition")
 
-            if (x.checked || y.checked) {   //or
-                document.getElementById("onlyrow").innerHTML = "<img src=\"/static/assets/ethanimages/vomilton.png\" alt=\"Eh...\" style=\"width: 200px; height: 200px; object-fit: cover\" ></a>"
+    // displaying user input for their tasks
+    function display(i) {
+        let task = "task." + i;
+        // let task2 = "task." + id;
+        const show_input = "show_input." + i;
+        const cell = "cell." + i;
+        localStorage.setItem(task, document.getElementById(task).value); // stores value in session
+        const TASK = localStorage.getItem(task); // a new variable for the list
+        const list = document.createElement('list');
+        list.innerHTML = "<li>" + TASK + "</li>"; // list
+        document.getElementById(show_input).appendChild(list); // adding to list
+        localStorage.setItem(show_input, document.getElementById(show_input).innerHTML)
+
+        // whether or not checkbox is toggled, and uses color based on result
+
+        let checked = document.getElementById("color").checked;
+        if ( checked ) {
+            colorChange(i);
+            localStorage.setItem("checkbox", "true");
+        } else {
+            document.getElementById(cell).style.backgroundColor = null;
+            localStorage.setItem("checkbox", "false");
+        }
+        document.getElementById(task).value = null; // clears input box, QOL update
+    }
+
+    // enter key
+    for (let i = 1; i < 8; i++) {
+        const task = "task." + i;
+        const button = "add_task." + i;
+        document.getElementById(task)
+            .addEventListener("keyup", function (event) {
+                event.preventDefault();
+                if (event.keyCode === 13) { // maybe it's deprecated, but it works
+                    document.getElementById(button).click(); // button runs the display() code
+                }
+            });
+    }
+
+    // checks stored web memory for tasks from a prev. session
+    function check() {
+        for (let i = 1; i < 8; i++) {
+            const task = "task." + i;
+            const show_input = "show_input." + i;
+            if (typeof localStorage.getItem(task) !== null) {
+                // let tasks = "'" + str + "'".split(" "); // I really thought I needed the text...
+                document.getElementById(show_input).innerHTML = localStorage.getItem(show_input);
+                // alert(str.match(/.*?[\.\s]+?/g)) // nah bruh
             }
-            if (x.checked && y.checked) {   //and
-                document.getElementById("onlyrow").innerHTML = "<img src=\"/static/assets/ethanimages/ankles.png\" alt=\"Sheeeeeesh\" style=\"width: 200px; height: 200px; object-fit: cover\" ></a>"
-            }
-            if (!(x.checked || y.checked)) {    //nor
-                document.getElementById("onlyrow").innerHTML = "<img src=\"/static/assets/ethanimages/anirudhsus.png\" alt=\"Sadge\" style=\"width: 200px; height: 200px; object-fit: cover\" ></a>"
-
-            }
-        }
-
-        function changeImage(ndx) {     <!-- if else statement using the function changeImage   -->
-            if (document.getElementById("img" + ndx).src == document.getElementById('img_orig' + ndx).innerHTML) { <!-- if original switch to gray   -->
-                document.getElementById('img' + ndx).src = document.getElementById('img_gray' + ndx).innerHTML;
-            } else {
-                document.getElementById('img' + ndx).src = document.getElementById('img_orig' + ndx).innerHTML;  <!-- if gray switch to original   -->
+            // let cellColor = cell + "." + "color";
+            // if ( typeof localStorage.getItem(cellColor) !== "#" ) {
+            //     colorChange(i)
+            // }
+            // let checked = document.getElementById("color").checked
+            if (localStorage.getItem("checkbox")) {
+                document.getElementById("color").checked = true;
+                colorChange(i);
             }
         }
+    }
 
-        function changeColor(color) {
-            document.body.style.background = color;
-        }
-        function RANDOMCOLOR() {
-            let color = '#' + Math.floor(Math.random() * 16777215).toString(16);
-            changeColor(color);
-        }
-
-        function remove(id) {
-            const task = "task." + id;
-            const show_input = "show_input." + id;
-            // clearing web storage
-            localStorage.removeItem(task);
-            localStorage.removeItem(show_input);
-            // clearing cell text
-            document.getElementById(show_input).innerHTML = null;
+    // clears task list and web storage
+    function remove(i) {
+        const task = "task." + i;
+        const show_input = "show_input." + i;
+        let cell = "cell." + i;
+        // clearing web storage
+        localStorage.removeItem(task);
+        localStorage.removeItem(show_input);
+        // clearing cell text
+        document.getElementById(show_input).innerHTML = null;
+        if ( typeof document.getElementById(cell).style.backgroundColor !== null ) { // checking for color
+            document.getElementById(cell).style.backgroundColor = null // removing color
         }
 
-        function AUTUMN() {
-            changeColor('sandybrown');
-        }
-        function WINTER() {
-            changeColor('lightblue');
-        }
-        function SPRING() {
-            changeColor('lightpink');
-        }
-        function SUMMER() {
-            changeColor('deepskyblue');
-        }
-        function returnColor() {
-            document.body.style.background = "#FAEBD7";
-            document.body.style.color = 'black';
-        }
-        function darkMode() {
-            document.body.style.color = "#b3b3b3";
-            document.body.style.background = "#35363a";
-        }
-    </script>
-</div>
-</html>
+    }
+
+</script>
