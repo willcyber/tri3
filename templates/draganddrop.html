@@ -62,6 +62,267 @@
 
 
 </style>
+
+<script>
+    // Make the DIV element draggable:
+    dragElement(document.getElementById("mydiv"));
+    dragElement(document.getElementById("mydiv2"));
+
+    function dragElement(elmnt) {
+        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+        if (document.getElementById(elmnt.id + "header")) {
+            // if present, the header is where you move the DIV from:
+            document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+        } else {
+            // otherwise, move the DIV from anywhere inside the DIV:
+            elmnt.onmousedown = dragMouseDown;
+        }
+
+        function dragMouseDown(e) {
+            e = e || window.event;
+            e.preventDefault();
+            // get the mouse cursor position at startup:
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            document.onmouseup = closeDragElement;
+            // call a function whenever the cursor moves:
+            document.onmousemove = elementDrag;
+        }
+
+        function elementDrag(e) {
+            e = e || window.event;
+            e.preventDefault();
+            // calculate the new cursor position:
+            pos1 = pos3 - e.clientX;
+            pos2 = pos4 - e.clientY;
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            // set the element's new position:
+            elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+            elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+        }
+
+        function closeDragElement() {
+            // stop moving when mouse button is released:
+            document.onmouseup = null;
+            document.onmousemove = null;
+        }
+    }
+</script>
+</body>
+<style>
+    p {
+        font-family: Raleway;
+    }
+    label {
+        font-family: Raleway;
+    }
+    body {
+        background-color: antiquewhite;
+        color: black;
+    }
+
+    .dark-mode {
+        background-color: #35363a;
+        color: #b3b3b3;
+        border: 3px white;
+    }
+    button.task {
+        margin-top: 5px;
+        font-family: Raleway;
+        padding: 6px 14px;
+        border-radius: 6px;
+        color: #3D3D3D;
+        background: #fff;
+        border: 1px solid white;
+        box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1);
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        transition-duration: 0.4s;
+    }
+    button {
+        margin-top: 5px;
+        font-family: Raleway;
+        padding: 6px 14px;
+        border-radius: 6px;
+        color: #3D3D3D;
+        background: #fff;
+        border: 1px solid black;
+        box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1);
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        transition-duration: 0.4s;
+    }
+    button:hover {
+        background-color: floralwhite;
+        border: 1px solid black;
+    }
+    table {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        width: fit-content;
+        overflow-wrap: anywhere;
+        font-family: Raleway;
+        text-align: center;
+    }
+    .button1:hover {
+        box-shadow: inset 300px 0 0 0 #FFD580;
+        cursor: pointer;
+        color: sandybrown;
+    }
+    .button1:before {
+        transition: all ease;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        right: 50%;
+        bottom: 0;
+        opacity: 0;
+        content: "";
+        background-color: sandybrown;
+    }
+
+    .button1:hover:before {
+        transition: .5s all ease;
+        left: 0;
+        right: 0;
+        opacity: 1;
+        z-index: -1;
+
+    }
+    .button2:hover {
+        box-shadow: inset 300px 0 0 0 #ADD8E6;
+        cursor: pointer;
+        color: white;
+    }
+    .button2:before {
+        transition: all ease;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        right: 50%;
+        bottom: 0;
+        opacity: 0;
+        content: "";
+        background-color: lightblue;
+    }
+
+    .button2:hover:before {
+        transition: .5s all ease;
+        left: 0;
+        right: 0;
+        opacity: 1;
+        z-index: -1;
+
+    }
+    .button3:hover {
+        box-shadow: inset 300px 0 0 0 #CBC3E3;
+        cursor: pointer;
+        color: lightpink;
+    }
+    .button3:before {
+        transition: all ease;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        right: 50%;
+        bottom: 0;
+        opacity: 0;
+        content: "";
+        background-color: lightpink;
+    }
+
+    .button3:hover:before {
+        transition: .5s all ease;
+        left: 0;
+        right: 0;
+        opacity: 1;
+        z-index: -1;
+
+    }
+    .button4:hover {
+        box-shadow: inset 300px 0 0 0 #87CEEB;
+        cursor: pointer;
+        color: cornflowerblue;
+    }
+    .button4:before {
+        transition: all ease;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        right: 50%;
+        bottom: 0;
+        opacity: 0;
+        content: "";
+        background-color: deepskyblue;
+    }
+
+    .button4:hover:before {
+        transition: .5s all ease;
+        left: 0;
+        right: 0;
+        opacity: 1;
+        z-index: -1;
+
+    }
+    h1 {
+        font-family: Forum;
+        font-size: 90px;
+    }
+    table {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        width: 100%;
+        overflow-wrap: anywhere;
+        font-family: Raleway;
+        text-align: center;
+    }
+    th, td{
+        border: 3px solid black;
+        column-rule: 4px dotted rgb(79, 185, 227);
+        padding: 10px;
+    }
+
+    input.text {
+        font-family: Raleway;
+        border: 0;
+    }
+
+    input::placeholder {
+        color: gray;
+        padding-left: 10px;
+        font-size: small;
+        font-family: Raleway;
+    }
+    #top {
+        display: flex;
+        justify-content: space-between;
+    }
+    ul {
+        margin-left: -40px;
+        list-style-position: inside;
+    }
+    button.rainbow {
+        background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);
+        background-color:#191919;
+        border-radius:5px;
+    }
+    button.rainbow:hover {
+        animation:slidebg 10s linear infinite;
+    }
+    @keyframes slidebg {
+        to {
+            background-position:10vw;
+        }
+    }
+    button.dark {
+        background-color: #363d47;
+        color: #9daf9b;
+    }
+</style>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
