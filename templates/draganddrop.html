@@ -27,6 +27,18 @@
 
 </div>
 
+<div id="mydiv3">
+    <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
+    <div id="mydivheader3">Coding</div>
+
+</div>
+
+<div id="mydiv4">
+    <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
+    <div id="mydivheader4">Reading</div>
+
+</div>
+
 <style>
     #mydiv {
         position: absolute;
@@ -40,6 +52,22 @@
         position: absolute;
         z-index: 9;
         background-color: #E34141FF;
+        border: 1px solid #d3d3d3;
+        text-align: center;
+    }
+
+    #mydiv3 {
+        position: absolute;
+        z-index: 9;
+        background-color: #8FE341FF;
+        border: 1px solid #d3d3d3;
+        text-align: center;
+    }
+
+    #mydiv4{
+        position: absolute;
+        z-index: 9;
+        background-color: #DE41E3FF;
         border: 1px solid #d3d3d3;
         text-align: center;
     }
@@ -60,6 +88,21 @@
         color: #fff;
     }
 
+    #mydivheader3 {
+        padding: 10px;
+        cursor: move;
+        z-index: 10;
+        background-color: #8FE341FF;
+        color: #fff;
+    }
+
+    #mydivheader4 {
+        padding: 10px;
+        cursor: move;
+        z-index: 10;
+        background-color: #DE41E3FF;
+        color: #fff;
+    }
 
 </style>
 
@@ -67,6 +110,8 @@
     // Make the DIV element draggable:
     dragElement(document.getElementById("mydiv"));
     dragElement(document.getElementById("mydiv2"));
+    dragElement(document.getElementById("mydiv3"));
+    dragElement(document.getElementById("mydiv4"));
 
     function dragElement(elmnt) {
         var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
