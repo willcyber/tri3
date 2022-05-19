@@ -5,21 +5,33 @@
 table{
     margin:auto;
 }
-td{
+.subTimerButtons td{
     padding:10px;
 }
 .buttonTimer{
-    border: black solid 1px;
-    border-radius:10px;
+    border: none;
+    outline: none;
+    margin: 5px;
+    border-radius: 4px;
+    transition: .1s;
+    box-shadow: 5px 5px 8px #00000020,
+    -1px -1px 6px #ffff;
     font-size:25px;
+    background:none;
+
+}
+.buttonTimer:hover{
+    box-shadow:  inset 5px 5px 8px rgba(16, 16, 16, .1), inset -5px -5px 8px #fff;
+    background: #fff;
 }
 .subTimer{
     margin:auto;
     text-align:center;
-    border: black solid 1px;
-    width:70%;
+    width:50%;
     height:10%;
     padding:10px;
+    box-shadow: 5px 5px 8px #00000020,
+    -1px -1px 6px #ffff;
 }
 h3{
     display:inline;
@@ -29,19 +41,40 @@ h3{
 }
 .fa-square-xmark:hover{
     color:red;
-}
-.fa-circle-plus{
-    padding:3px;
-}
-.fa-circle-plus:hover{
-
+    cursor:pointer;
 }
 .noDisplay{
     display:none;
 }
 .fa-moon{
+    display:none;
     color:gray;
 }
 .fa-sun{
+    display:none;
    color:yellow;
+}
+input{
+    background:none;
+    border:none;
+    width:50px;
+    height:50px;
+}
+input:focus{
+    outline:none;
+}
+.alarmInput td{
+    font-size:35px;
+    width:71px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.alarmRow{
+    width:35%;
+}
+.toggle:hover{
+    fill:white;
 }
