@@ -55,6 +55,10 @@ def calculator():
 def conversion():
     return render_template("conversion.html")
 
+@app.route('/dictionary')
+def dictionary():
+    return render_template("dictionary.html")
+
 @app.route('/feedback/', methods=['GET', 'POST'])
 def feedback():
     if request.form:

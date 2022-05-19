@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Dictionary</title>
+    <link href="/static/assets/css/dictionary.css" rel="stylesheet">
+    <script src="/static/assets/js/dictionary.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
+    <!-- CDN Link for Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+
+{% include "navbar.html" %}
+
+<body>
+<audio id="sound"></audio>
+<div class="container">
+    <div class="search-box">
+        <input
+                type="text"
+                placeholder="Type the word here.."
+                id="inp-word"
+        />
+        <button id="search-btn">Search</button>
+    </div>
+    <div class="result" id="result"></div>
+</div>
+
+</body>
+</html>
