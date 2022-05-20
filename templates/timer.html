@@ -10,25 +10,33 @@
 
 {% extends "layout.html" %}
 
-<body>
 {% block body %}
 
-    <!-- Shows current hour, minute, and second -->
-    <div class="mainTime">
-        <span id="currentTime"></span>
-        <i id="pm" class="fa-solid fa-moon"></i>
-        <i id="am" class="fa-solid fa-sun"></i>
+    <body>
+
+    <div id="fadeInArea">
+        <!-- Loading text while timer is not displayed -->
+        <div class="loadScreen" id="loadScreen">
+            <h1>Loading...</h1>
+        </div>
+
+        <!-- Shows current hour, minute, and second -->
+        <div class="mainTime">
+            <span id="currentTime"></span>
+            <i id="pm" class="fa-solid fa-moon"></i>
+            <i id="am" class="fa-solid fa-sun"></i>
+        </div>
+
+        <!-- Buttons that open timer, alarm, and stopwatch -->
+        <table class="subTimerButtons noDisplay" id="mainButtons">
+            <tr>
+                <td><button class="buttonTimer" onclick="showAlarm()">Alarm</button></td>
+                <td><button class="buttonTimer" onclick="showTimer()">Timer</button></td>
+                <td><button class="buttonTimer" onclick="showStopwatch()">Stopwatch</button></td>
+
+            </tr>
+        </table>
     </div>
-
-    <!-- Buttons that open timer, alarm, and stopwatch -->
-    <table class="subTimerButtons">
-        <tr>
-            <td><button class="buttonTimer" onclick="showAlarm()">Alarm</button></td>
-            <td><button class="buttonTimer" onclick="showTimer()">Timer</button></td>
-            <td><button class="buttonTimer" onclick="showStopwatch()">Stopwatch</button></td>
-
-        </tr>
-    </table>
 
     <!-- Alarm -->
     <div class="subTimer noDisplay" id="alarmMenu">

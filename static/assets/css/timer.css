@@ -78,3 +78,37 @@ input::-webkit-inner-spin-button {
 .toggle:hover{
     fill:white;
 }
+.loadScreen{
+    text-align:center;
+    padding-top:50px;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+.fadeIn{
+    animation:fadeIn;
+    animation-duration: 1s;
+}
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+.fadeOut{
+    animation:fadeOut;
+    animation-duration: 1s;
+}
