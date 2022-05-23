@@ -25,7 +25,11 @@ const timerFunc = setInterval(function(){
         seconds = "0" + seconds;
     }
 
-    document.getElementById('currentTime').innerText = hours + ":" + minutes + ":" + seconds
+    document.getElementById('currentTime').innerText = hours + ":" + minutes + ":" + seconds;
+
+    document.getElementById('mainButtons').classList.remove('noDisplay');
+    document.getElementById('fadeInArea').classList.add('fadeIn');
+    document.getElementById('loadScreen').classList.add('noDisplay');
 
 },1000)
 
@@ -110,15 +114,6 @@ function toggleAM_PM(){
     }
 }
 
-let checkAlarm = setInterval(function(){
-    if (window.date.getHours() === window.alarmHour && window.date.getMinutes() === window.alarmMinute) {
-        alert('Alarm is over.');
-        document.getElementById('viewActiveAlarm').classList.add('noDisplay');
-        document.getElementById('alarm').classList.remove('noDisplay');
-        clearInterval(checkAlarm);
-    }
-}, 1000)
-
 function setAlarm(){
     if(document.getElementById('alarmHour').value === '' || document.getElementById('alarmMinute').value === ''){
         return alert('One or more boxes left empty')
@@ -137,9 +132,23 @@ function setAlarm(){
     document.getElementById('alarm').classList.add('noDisplay');
     document.getElementById('viewActiveAlarm').classList.remove('noDisplay');
     document.getElementById('alarmTime').innerText = document.getElementById('alarmHour').value + ":" + document.getElementById('alarmMinute').value + " " + document.getElementById('AM_PM').innerText
+
+    checkAlarm();
 }
 
 function cancelAlarm(){
     document.getElementById('viewActiveAlarm').classList.add('noDisplay');
     document.getElementById('alarm').classList.remove('noDisplay');
+    clearInterval(window.checkAlarmVar);
+}
+
+function checkAlarm(){
+    window.checkAlarmVar = setInterval(function(){
+        if (window.date.getHours() === window.alarmHour && window.date.getMinutes() === window.alarmMinute) {
+            alert('Alarm is over.');
+            document.getElementById('viewActiveAlarm').classList.add('noDisplay');
+            document.getElementById('alarm').classList.remove('noDisplay');
+            clearInterval(window.checkAlarmVar);
+        }
+    }, 1000)
 }
