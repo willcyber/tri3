@@ -12,33 +12,91 @@
 </head>
 
 <body>
-<input type="text" class="draggable" />
-<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 
 <!-- Draggable DIV -->
-<div id="mydiv">
+<div id="mydiv" contenteditable="true">
     <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
-    <div id="mydivheader">Homework</div>
+    <div id="mydivheader" contenteditable="true">Homework</div>
 
 </div>
 
-<div id="mydiv2">
+<div id="mydiv2" contenteditable="true">
     <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
-    <div id="mydivheader2">Sports</div>
+    <div id="mydivheader2" contenteditable="true">Sports</div>
 
 </div>
 
-<div id="mydiv3">
+<div id="mydiv3" contenteditable="true">
     <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
-    <div id="mydivheader3">Coding</div>
+    <div id="mydivheader3" contenteditable="true">Coding</div>
 
 </div>
 
-<div id="mydiv4">
+<div id="mydiv4" contenteditable="true">
     <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
-    <div id="mydivheader4">Reading</div>
+    <div id="mydivheader4" contenteditable="true">Reading</div>
 
 </div>
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>jQuery scaffold</title>
+</head>
+
+<body>
+<input placeholder="Assignment" type="text" class="draggable" id="task.{{i}}">
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<script>
+    (function($) {
+        $.fn.drags = function(opt) {
+
+            opt = $.extend({handle:"",cursor:"move"}, opt);
+
+            if(opt.handle === "") {
+                var $el = this;
+            } else {
+                var $el = this.find(opt.handle);
+            }
+
+            return $el.css('cursor', opt.cursor).on("mousedown", function(e) {
+                if(opt.handle === "") {
+                    var $drag = $(this).addClass('draggable');
+                } else {
+                    var $drag = $(this).addClass('active-handle').parent().addClass('draggable');
+                }
+                var z_idx = $drag.css('z-index'),
+                    drg_h = $drag.outerHeight(),
+                    drg_w = $drag.outerWidth(),
+                    pos_y = $drag.offset().top + drg_h - e.pageY,
+                    pos_x = $drag.offset().left + drg_w - e.pageX;
+                $drag.css('z-index', 1000).parents().on("mousemove", function(e) {
+                    $('.draggable').offset({
+                        top:e.pageY + pos_y - drg_h,
+                        left:e.pageX + pos_x - drg_w
+                    }).on("mouseup", function() {
+                        $(this).removeClass('draggable').css('z-index', z_idx);
+                    });
+                });
+                e.preventDefault(); // disable selection
+            }).on("mouseup", function() {
+                if(opt.handle === "") {
+                    $(this).removeClass('draggable');
+                } else {
+                    $(this).removeClass('active-handle').parent().removeClass('draggable');
+                }
+            });
+
+        }
+    })(jQuery);
+
+    $(".draggable").drags();
+</script>
+</body>
+</html>
+
+
 
 <style>
     #mydiv {
@@ -82,7 +140,6 @@
     }
 
     #mydivheader {
-        padding: 10px;
         cursor: move;
         z-index: 10;
         background-color: #2196F3;
@@ -90,7 +147,6 @@
     }
 
     #mydivheader2 {
-        padding: 10px;
         cursor: move;
         z-index: 10;
         background-color: #E34141FF;
@@ -98,7 +154,6 @@
     }
 
     #mydivheader3 {
-        padding: 10px;
         cursor: move;
         z-index: 10;
         background-color: #8FE341FF;
@@ -106,7 +161,6 @@
     }
 
     #mydivheader4 {
-        padding: 10px;
         cursor: move;
         z-index: 10;
         background-color: #DE41E3FF;
@@ -116,6 +170,7 @@
 </style>
 
 <script>
+    sessionStorage.setItem('someKey','someValue');
     // Make the DIV element draggable:
     dragElement(document.getElementById("mydiv"));
     dragElement(document.getElementById("mydiv2"));
@@ -423,7 +478,7 @@
                         <td id="cell.{{i}}">
                             <ol id="show_input.{{i}}">
                             </ol>
-                            <input placeholder="Assignment" type="text" class="text" id="task.{{i}}">
+                            <input placeholder="Assignment" type="text" class="draggable" id="task.{{i}}">
                             <button class="task" id="add_task.{{i}}" onclick="display('{{i}}')">Click To Add Assignment</button>
                             <br>
                             <button class="task" onclick="remove('{{i}}')">Click To Clear Assignment(s)</button>
@@ -530,7 +585,6 @@
                     }
 
                 }
-
             </script>
         </div>
         </body>
@@ -641,5 +695,7 @@
         }
 
     }
+
+
 
 </script>
