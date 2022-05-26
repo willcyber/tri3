@@ -59,6 +59,10 @@ def conversion():
 def dictionary():
     return render_template("dictionary.html")
 
+@app.route('/main')
+def main():
+    return render_template("main.html")
+
 @app.route('/feedback/', methods=['GET', 'POST'])
 def feedback():
     if request.form:
