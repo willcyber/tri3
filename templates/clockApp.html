@@ -3,8 +3,11 @@
 <head>
     <title>Study Tools | Timer</title>
     <meta charset="UTF-8">
-    <script type="text/javascript" src="/static/assets/js/timer.js"></script> <!-- Import JS -->
-    <link rel="stylesheet" href="{{url_for('static', filename='/assets/css/timer.css') }}"> <!-- Import CSS -->
+    <script type="text/javascript" src="/static/assets/js/timer.js"></script> <!-- Import timer JS -->
+    <script type="text/javascript" src="/static/assets/js/alarm.js"></script> <!-- Import alarm JS -->
+    <script type="text/javascript" src="/static/assets/js/stopwatch.js"></script> <!-- Import stopwatch JS -->
+    <script type="text/javascript" src="/static/assets/js/clock.js"></script> <!-- Import clock JS -->
+    <link rel="stylesheet" href="{{url_for('static', filename='/assets/css/clockApp.css') }}"> <!-- Import CSS -->
 
 </head>
 
@@ -51,9 +54,9 @@
                 <td>Minute</td>
             </tr>
             <tr class="alarmInput">
-                <td><input placeholder="00" type="number" onKeyPress="if(this.value.length==2) return false;" id="alarmHour" onfocusout="alarmHourCheck()"></td>
+                <td><input class="alarmInput" placeholder="00" type="number" onKeyPress="if(this.value.length==2) return false;" id="alarmHour" onfocusout="alarmHourCheck()"></td>
                 <td style="width:5px;">:</td>
-                <td><input placeholder="00" type="number" onKeyPress="if(this.value.length==2) return false;" id="alarmMinute" onfocusout="alarmMinuteCheck()"></td>
+                <td><input class="alarmInput" placeholder="00" type="number" onKeyPress="if(this.value.length==2) return false;" id="alarmMinute" onfocusout="alarmMinuteCheck()"></td>
                 <td id="AM_PM">AM</td>
                 <td><svg onclick="toggleAM_PM()" class="toggle" height="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M32 176h370.8l-57.38 57.38c-12.5 12.5-12.5 32.75 0 45.25C351.6 284.9 359.8 288 368 288s16.38-3.125 22.62-9.375l112-112c12.5-12.5 12.5-32.75 0-45.25l-112-112c-12.5-12.5-32.75-12.5-45.25 0s-12.5 32.75 0 45.25L402.8 112H32c-17.69 0-32 14.31-32 32S14.31 176 32 176zM480 336H109.3l57.38-57.38c12.5-12.5 12.5-32.75 0-45.25s-32.75-12.5-45.25 0l-112 112c-12.5 12.5-12.5 32.75 0 45.25l112 112C127.6 508.9 135.8 512 144 512s16.38-3.125 22.62-9.375c12.5-12.5 12.5-32.75 0-45.25L109.3 400H480c17.69 0 32-14.31 32-32S497.7 336 480 336z"/></svg></td>
             </tr>
@@ -80,12 +83,57 @@
     <!-- Timer -->
     <div class="subTimer noDisplay" id="timer">
         <i class="fa-solid fa-square-xmark fa-2xl" onclick="closeSubTimers()"></i>
+
+        <!-- Display when no timer is set -->
+        <table id="timerTable">
+            <tr class="timerInput">
+                <td><input id="timerHour" class="timerInput" placeholder="00" onKeyPress="if(this.value.length==2) return false;" onfocusout="timerHourCheck()"></td>
+                <td><p>h</p></td>
+                <td><input id="timerMinute" class="timerInput" placeholder="00" onKeyPress="if(this.value.length==2) return false;" onfocusout="timerMinuteCheck()"></td>
+                <td><p>m</p></td>
+                <td><input id="timerSecond" class="timerInput" placeholder="00" onKeyPress="if(this.value.length==2) return false;" onfocusout="timerSecondCheck()"></td>
+                <td><p>s</p></td>
+            </tr>
+            <tr>
+                <td colspan="5"><button class="buttonTimer" style="font-size:18px; margin-bottom:7px;" onclick="setTimer()">Set Timer</button></td>
+            </tr>
+        </table>
+
+        <!-- Display when timer is set -->
+        <table class="noDisplay" id="viewActiveTimer">
+            <tr>
+                <td><h4>Current Timer</h4></td>
+            </tr>
+            <tr>
+                <td><h2 id="timerTime"></h2></td>
+            </tr>
+            <tr>
+                <td><button style="font-size:15px;" class="buttonTimer" onclick="cancelTimer()">Cancel Timer</button></td>
+            </tr>
+        </table>
     </div>
 
     <!-- Stopwatch -->
     <div class="subTimer noDisplay" id="stopwatch">
         <i class="fa-solid fa-square-xmark fa-2xl" onclick="closeSubTimers()"></i>
+        <table style="font-size:30px;">
+            <tr id="stopwatchDisplay">
+                <td><span id="stopwatchHour">00</span></td><td></td>
+                <td><span>:</span></td><td></td>
+                <td><span id="stopwatchMinute">00</span></td><td></td>
+                <td><span>:</span></td><td></td>
+                <td><span id="stopwatchSecond">00</span></td><td></td>
+            </tr>
+            <tr class="noDisplay" id="stopwatchIsSet">
+                <td colspan="5"><button class="buttonTimer" style="font-size:18px;" onclick="pauseStopwatch();">Pause</button></td>
+                <td colspan="5"><button class="buttonTimer" style="font-size:18px;" onclick="resetStopwatch();">Reset</button></td>
+            </tr>
+            <tr id="stopwatchNotSet">
+                <td colspan="10"><button class="buttonTimer" style="font-size:18px;" onclick="startStopwatch();">Start</button></td>
+            </tr>
+        </table>
     </div>
+
 
 {% endblock %}
 </body>

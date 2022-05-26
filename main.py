@@ -21,7 +21,7 @@ def alexCreateTask():
 
 @app.route('/timer')
 def timer():
-    return render_template("timer.html")
+    return render_template("clockApp.html")
 
 @app.route('/rockpaperscissors')
 def rockpaperscissors():

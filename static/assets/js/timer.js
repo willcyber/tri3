@@ -1,54 +1,7 @@
-const timerFunc = setInterval(function(){
-    window.date = new Date();
-    let hours = window.date.getHours();
-    let minutes = window.date.getMinutes();
-    let seconds = window.date.getSeconds();
-
-    if(hours >= 12){
-        if(hours > 12){
-            hours -= 12;
-        }
-        document.getElementById('am').style.display = "none";
-        document.getElementById('pm').style.display = "inline";
-    } else{
-        document.getElementById('am').style.display = "inline";
-        document.getElementById('pm').style.display = "none";
-    }
-
-    if(hours < 10){
-        hours = "0" + hours;
-    }
-    if(minutes < 10){
-        minutes = "0" + minutes;
-    }
-    if(seconds < 10){
-        seconds = "0" + seconds;
-    }
-
-    document.getElementById('currentTime').innerText = hours + ":" + minutes + ":" + seconds;
-
-    document.getElementById('mainButtons').classList.remove('noDisplay');
-    document.getElementById('fadeInArea').classList.add('fadeIn');
-    document.getElementById('loadScreen').classList.add('noDisplay');
-
-},1000)
-
-function showAlarm(){
-    document.getElementById('alarmMenu').classList.remove('noDisplay');
-    document.getElementById('timer').classList.add('noDisplay');
-    document.getElementById('stopwatch').classList.add('noDisplay');
-}
-
 function showTimer(){
     document.getElementById('timer').classList.remove('noDisplay');
     document.getElementById('alarmMenu').classList.add('noDisplay');
     document.getElementById('stopwatch').classList.add('noDisplay');
-}
-
-function showStopwatch(){
-    document.getElementById('stopwatch').classList.remove('noDisplay');
-    document.getElementById('timer').classList.add('noDisplay');
-    document.getElementById('alarmMenu').classList.add('noDisplay');
 }
 
 function closeSubTimers(){
@@ -58,97 +11,120 @@ function closeSubTimers(){
 
 }
 
-function newAlarm(){
-    document.getElementById('alarm').classList.remove('noDisplay');
-    document.getElementById('newAlarm').classList.add('noDisplay');
-}
-
-function alarmHourCheck(){
-    if(document.getElementById('alarmHour').value !== ''){
-        if(document.getElementById('alarmHour').value %1 !== 0){
+function timerHourCheck(){
+    if(document.getElementById('timerHour').value !== ''){
+        if(document.getElementById('timerHour').value %1 !== 0){
             alert('Only whole numbers can be entered.')
-            document.getElementById('alarmHour').value = '';
+            document.getElementById('timerHour').value = '';
             return
         }
-        if(document.getElementById('alarmHour').value < 1 || document.getElementById('alarmHour').value > 12){
-            alert('That value is out of range (1-12).')
-            document.getElementById('alarmHour').value = '';
+        if(document.getElementById('timerHour').value < 1){
+            alert('Only positive numbers can be entered.')
+            document.getElementById('timerHour').value = '';
         } else{
-            if(document.getElementById('alarmHour').value.length === 1){
-                document.getElementById('alarmHour').value = '0' + document.getElementById('alarmHour').value;
+            if(document.getElementById('timerHour').value.length === 1){
+                document.getElementById('timerHour').value = '0' + document.getElementById('timerHour').value;
             }
         }
     }
 }
 
-function alarmMinuteCheck(){
-    if(document.getElementById('alarmMinute').value !== ''){
-        if(document.getElementById('alarmMinute').value %1 !== 0){
+function timerMinuteCheck(){
+    if(document.getElementById('timerMinute').value !== ''){
+        if(document.getElementById('timerMinute').value %1 !== 0){
             alert('Only whole numbers can be entered.')
-            document.getElementById('alarmMinute').value = '';
+            document.getElementById('timerMinute').value = '';
             return
         }
-        if(document.getElementById('alarmMinute').value < 0 || document.getElementById('alarmMinute').value > 59){
-            alert('That value is out of range (0-59).')
-            document.getElementById('alarmMinute').value = '';
+        if(document.getElementById('timerMinute').value < 1){
+            alert('Only positive numbers can be entered.')
+            document.getElementById('timerMinute').value = '';
         } else{
-            if(document.getElementById('alarmMinute').value.length === 1){
-                document.getElementById('alarmMinute').value = '0' + document.getElementById('alarmMinute').value;
+            if(document.getElementById('timerMinute').value.length === 1){
+                document.getElementById('timerMinute').value = '0' + document.getElementById('timerMinute').value;
             }
         }
     }
 }
 
-function closeAlarm(){
-    document.getElementById('alarm').classList.add('noDisplay');
-    document.getElementById('newAlarm').classList.remove('noDisplay');
-    document.getElementById('alarmHour').value = '';
-    document.getElementById('alarmMinute').value = '';
-}
-
-function toggleAM_PM(){
-    if(document.getElementById('AM_PM').innerText === 'AM'){
-        document.getElementById('AM_PM').innerText = 'PM';
-    } else{
-        document.getElementById('AM_PM').innerText = 'AM';
-    }
-}
-
-function setAlarm(){
-    if(document.getElementById('alarmHour').value === '' || document.getElementById('alarmMinute').value === ''){
-        return alert('One or more boxes left empty')
-    }
-
-    window.alarmHour = parseInt(document.getElementById('alarmHour').value);
-    window.alarmMinute = parseInt(document.getElementById('alarmMinute').value);
-
-    if(document.getElementById('AM_PM').innerText === 'PM' && window.alarmHour !== 12){
-        window.alarmHour = parseInt(document.getElementById('alarmHour').value) + 12;
-    }
-    else if(document.getElementById('AM_PM').innerText === 'AM' && window.alarmHour === 12){
-        window.alarmHour = parseInt(document.getElementById('alarmHour').value) - 12;
-    }
-
-    document.getElementById('alarm').classList.add('noDisplay');
-    document.getElementById('viewActiveAlarm').classList.remove('noDisplay');
-    document.getElementById('alarmTime').innerText = document.getElementById('alarmHour').value + ":" + document.getElementById('alarmMinute').value + " " + document.getElementById('AM_PM').innerText
-
-    checkAlarm();
-}
-
-function cancelAlarm(){
-    document.getElementById('viewActiveAlarm').classList.add('noDisplay');
-    document.getElementById('alarm').classList.remove('noDisplay');
-    clearInterval(window.checkAlarmVar);
-}
-
-function checkAlarm(){
-    window.checkAlarmVar = setInterval(function(){
-        if (window.date.getHours() === window.alarmHour && window.date.getMinutes() === window.alarmMinute) {
-            alert('Alarm is over.');
-            document.getElementById('viewActiveAlarm').classList.add('noDisplay');
-            document.getElementById('alarm').classList.remove('noDisplay');
-            clearInterval(window.checkAlarmVar);
+function timerSecondCheck(){
+    if(document.getElementById('timerSecond').value !== ''){
+        if(document.getElementById('timerSecond').value %1 !== 0){
+            alert('Only whole numbers can be entered.')
+            document.getElementById('timerSecond').value = '';
+            return
         }
-    }, 1000)
+        if(document.getElementById('timerSecond').value < 1){
+            alert('Only positive numbers can be entered.')
+            document.getElementById('timerSecond').value = '';
+        } else{
+            if(document.getElementById('timerSecond').value.length === 1){
+                document.getElementById('timerSecond').value = '0' + document.getElementById('timerSecond').value;
+            }
+        }
+    }
+}
+
+function setTimer(){
+    if(document.getElementById('timerHour').value === '' && document.getElementById('timerMinute').value === '' && document.getElementById('timerSecond').value === ''){
+        return alert('All boxes left empty.')
+    }
+
+    if(document.getElementById('timerHour').value === ''){
+        document.getElementById('timerHour').value = 0;
+    }
+    if(document.getElementById('timerMinute').value === ''){
+        document.getElementById('timerMinute').value = 0;
+    }
+    if(document.getElementById('timerSecond').value === ''){
+        document.getElementById('timerSecond').value = 0;
+    }
+
+    window.timerHour = parseInt(document.getElementById('timerHour').value);
+    window.timerMinute = parseInt(document.getElementById('timerMinute').value);
+    window.timerSecond = parseInt(document.getElementById('timerSecond').value);
+
+    document.getElementById('timerTable').classList.add('noDisplay');
+    document.getElementById('viewActiveTimer').classList.remove('noDisplay');
+    document.getElementById('timerTime').innerText = document.getElementById('timerHour').value + "h " + document.getElementById('timerMinute').value + "m " + document.getElementById('timerSecond').value + "s"
+
+    window.timerHour *= (60*60*1000);
+    window.timerMinute *= (60*1000);
+    window.timerSecond *= 1000;
+    window.rawMS = (window.timerSecond + window.timerMinute + window.timerHour)
+
+    timerCountDown();
+}
+
+function timerCountDown(){
+    let now = new Date().getTime();
+    let countDownDate = new Date(now + window.rawMS).getTime();
+    window.timerCountDownVar = setInterval(function(){
+
+            now = new Date().getTime();
+            let distance = countDownDate - now;
+
+            let displayHour = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let displayMinute = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            let displaySecond = Math.floor((distance % (1000 * 60)) / 1000);
+
+            if (distance < 0) {
+                alert('Timer is over.')
+                cancelTimer();
+            }
+
+        document.getElementById('timerTime').innerText = displayHour + "h " + displayMinute + "m " + displaySecond + "s"
+
+    },1000)
+}
+
+function cancelTimer(){
+    document.getElementById('timerHour').value = '';
+    document.getElementById('timerMinute').value = '';
+    document.getElementById('timerSecond').value = '';
+    document.getElementById('timerTime').innerText = document.getElementById('timerHour').value + "h " + document.getElementById('timerMinute').value + "m " + document.getElementById('timerSecond').value + "s";
+
+    document.getElementById('timerTable').classList.remove('noDisplay');
+    document.getElementById('viewActiveTimer').classList.add('noDisplay');
+    clearInterval(window.timerCountDownVar);
 }
