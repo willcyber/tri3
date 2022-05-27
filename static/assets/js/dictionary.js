@@ -12,8 +12,6 @@ btn.addEventListener("click", () => {
             result.innerHTML = `
             <div class="word">
                     <h3>${inpWord}</h3>
-                    <button onclick="playSound()">
-                        <i class="fas fa-volume-up"></i>
                     </button>
                 </div>
                 <div class="details">
@@ -32,9 +30,6 @@ btn.addEventListener("click", () => {
             result.innerHTML = `<h3 class="error">Couldn't Find The Word</h3>`;
         });
 });
-function playSound() {
-    sound.play();
-}
 
 const input = document.getElementById("inp-word");
 input.addEventListener("keypress", function(event) {
