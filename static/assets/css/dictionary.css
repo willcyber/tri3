@@ -42,6 +42,9 @@ body {
 }
 .result {
     position: relative;
+    max-height: 27vh;
+    bottom: 0;
+    height: 100%;
 }
 .result h3 {
     font-size: 30px;
@@ -50,7 +53,7 @@ body {
 .result .word {
     display: flex;
     justify-content: space-between;
-    margin-top: 80px;
+    margin-top: 30px;
 }
 .result button {
     background-color: transparent;
