@@ -8,7 +8,10 @@ function startStopwatch(){
     document.getElementById('stopwatchIsSet').classList.remove('noDisplay');
     document.getElementById('stopwatchNotSet').classList.add('noDisplay');
 
-    let hour = 0, minute = 0, second = 0;
+    let hour = 0;
+    let minute = 0;
+    let second = 0;
+    let millisecond = 0;
 
     setInterval(function(){
         second += 1;
@@ -21,13 +24,12 @@ function startStopwatch(){
             hour ++;
         }
         if(hour < 10){
-            hour = '0' + hour;
         }
         if(minute < 10){
-            minute = '0' + minute;
         }
         if(second < 10){
-            second = '0' + second;
+        }
+        if(millisecond < 10){
         }
         document.getElementById('stopwatchDisplay').innerText = hour + ':' + minute + ':' + second;
     },1000)
