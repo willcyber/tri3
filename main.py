@@ -1,11 +1,14 @@
 from flask import render_template
 from __init__ import app
 from flask import request
-from cruddy.app_crud import app_crud
+from database.app_feedback import app_feedback
 from cruddy.app_crud_api import app_crud_api
+from cruddy.app_crud import app_crud
 
 app.register_blueprint(app_crud)
+app.register_blueprint(app_feedback)
 app.register_blueprint(app_crud_api)
+
 
 @app.route('/')
 def index():
