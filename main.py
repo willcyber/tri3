@@ -1,15 +1,13 @@
 from flask import render_template
 from __init__ import app
 from flask import request
-from database.app_feedback import app_feedback
 from cruddy.app_crud_api import app_crud_api
 from cruddy.app_crud import app_crud
-from database.app_feedback import app_feedback
+from database.app_feedback import app_feed
 
 app.register_blueprint(app_crud)
-app.register_blueprint(app_feedback)
 app.register_blueprint(app_crud_api)
-app.register_blueprint(app_feedback)
+app.register_blueprint(app_feed)
 
 
 @app.route('/')
@@ -68,22 +66,18 @@ def dictionary():
 def main():
     return render_template("main.html")
 
+@app.route('/feedback/feedback/feedback')
+def thanks():
+    return render_template("thanks.html")
+
+
 @app.route('/feedback/', methods=['GET', 'POST'])
 def feedback():
     if request.form:
         input = request.form.get("feed1")
         name = request.form.get("feed2")
         if len(input) != 0:  # input field has content
-            return render_template("feedbackoriginal.html", input=input, name=name)
-    return render_template("feedbackoriginal.html")
-
-@app.route('/feedbac/', methods=['GET', 'POST'])
-def feedbac():
-    if request.form:
-        input = request.form.get("feed1")
-        name = request.form.get("feed2")
-        if len(input) != 0:  # input field has content
-            return render_template("feedbackoriginal.html", input=input, name=name)
+            return render_template("feedback.html", input=input, name=name)
     return render_template("feedback.html")
 
 @app.errorhandler(404)

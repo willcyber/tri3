@@ -2,10 +2,11 @@
 from flask import Blueprint, render_template, request, url_for, redirect, jsonify, make_response
 from flask_login import login_required
 from cruddy.query import *
+from database.model import Feedback
 
 
 # blueprint defaults https://flask.palletsprojects.com/en/2.0.x/api/#blueprint-objects
-app_feedback = Blueprint('feedback', __name__,
+app_feed = Blueprint('feedback', __name__,
                      url_prefix='/feedback',
                      template_folder='templates/feedback/',
                      static_folder='static',
@@ -63,20 +64,20 @@ app_feedback = Blueprint('feedback', __name__,
 
 
 # CRUD create/add
-@app_feedback.route('/create/', methods=["POST"])
+@app_feed.route('/feedback/', methods=["POST"])
 def create():
     """gets data from form and add it to Users table"""
     if request.form:
-        po = app_feedback(
+        po = Feedback(
             request.form.get("name"),
             request.form.get("feedback"),
         )
         po.create()
-    return redirect(url_for('feedback.html'))
+    return redirect("feedback")
 
 
 # CRUD read
-@app_feedback.route('/read/', methods=["POST"])
+@app_feed.route('/read/', methods=["POST"])
 def read():
     """gets userid from form and obtains corresponding data from Users table"""
     table = []
@@ -89,7 +90,7 @@ def read():
 
 
 # CRUD update
-@app_feedback.route('/update/', methods=["POST"])
+@app_feed.route('/update/', methods=["POST"])
 def update():
     """gets userid and name from form and filters and then data in  Users table"""
     if request.form:
@@ -102,7 +103,7 @@ def update():
 
 
 # CRUD delete
-@app_feedback.route('/delete/', methods=["POST"])
+@app_feed.route('/delete/', methods=["POST"])
 def delete():
     """gets userid from form delete corresponding record from Users table"""
     if request.form:
