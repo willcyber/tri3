@@ -72,7 +72,7 @@ def create():
             request.form.get("feedback"),
         )
         po.create()
-    return redirect(url_for('feedbac.html'))
+    return redirect(url_for('feedback.html'))
 
 
 # CRUD read
@@ -98,7 +98,7 @@ def update():
         po = user_by_id(id)
         if po is not None:
             po.update(name)
-    return redirect(url_for('feedbac.html'))
+    return redirect(url_for('feedback.html'))
 
 
 # CRUD delete
@@ -110,6 +110,6 @@ def delete():
         po = user_by_id(id)
         if po is not None:
             po.delete()
-    return redirect(url_for('feedbac.html'))
+    return redirect(url_for('feedback.html'))
 
 

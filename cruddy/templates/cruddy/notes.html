@@ -1,0 +1,44 @@
+
+{% block body %}
+    <style>
+        body {
+            background-color: #2A4284;
+        }
+    </style>
+    <title>Tennis Goals</title>
+    <div class="container py-4 " style="background-color: white">
+        <div class="container" style="background-color: darkslateblue; color: white">
+            <div class="p-5 mb-4 " style="font-family: exo_med; text-align: center">
+                <hr>
+                <!--Notes input form, textarea supports multiple lines of input  -->
+                <form method="POST" ID="create" action={{url_for('Notes.create')}}>
+                    <table class="table">
+                        <tr style="color: white">
+                            <th><label for="notes">Create a new note:</label></th>
+                        </tr>
+
+                        <tr style="color: white">
+                            <td><textarea rows = "5" cols = "100%" name = "notes" id="notes" required></textarea></td>
+                            <td><input type="submit" value="Add" ></td>
+                        </tr>
+
+                    </table>
+                </form>
+                <hr>
+                <!--Notes output area, Jinja lines iterate through notes,
+                    note.note is html converted from markdown -->
+                <div class="table-responsive">
+                    <table class="table">
+                        {% for note in notes %}
+                            <tr>
+                                <td style="color: white" >{{ note.note | safe }}</td>
+                            </tr>
+                        {% endfor %}
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
