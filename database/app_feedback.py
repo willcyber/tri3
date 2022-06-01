@@ -1,6 +1,6 @@
 """control dependencies to support CRUD app routes and APIs"""
 from flask import Blueprint, render_template, request, url_for, redirect, jsonify, make_response
-from flask_login import login_required
+from flask_login import login_required, current_user
 from cruddy.query import *
 from database.model import Feedback
 
@@ -63,8 +63,9 @@ app_feed = Blueprint('feedback', __name__,
 #     return render_template("authorize.html")
 
 
-# CRUD create/add
+
 @app_feed.route('/feedback/', methods=["POST"])
+@login_required
 def create():
     """gets data from form and add it to Users table"""
     if request.form:
@@ -76,8 +77,9 @@ def create():
     return redirect("feedback")
 
 
-# CRUD read
+
 @app_feed.route('/read/', methods=["POST"])
+@login_required
 def read():
     """gets userid from form and obtains corresponding data from Users table"""
     table = []
@@ -89,8 +91,9 @@ def read():
     return render_template("feedback.html", table=table)
 
 
-# CRUD update
+
 @app_feed.route('/update/', methods=["POST"])
+@login_required
 def update():
     """gets userid and name from form and filters and then data in  Users table"""
     if request.form:
@@ -102,8 +105,9 @@ def update():
     return redirect(url_for('feedback.html'))
 
 
-# CRUD delete
+
 @app_feed.route('/delete/', methods=["POST"])
+@login_required
 def delete():
     """gets userid from form delete corresponding record from Users table"""
     if request.form:
