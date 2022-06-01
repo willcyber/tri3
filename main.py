@@ -5,11 +5,12 @@ from flask import request
 from cruddy.app_crud_api import app_crud_api
 from cruddy.app_crud import app_crud
 from database.app_feedback import app_feed
+from cruddy.app_notes import app_notes
 
 app.register_blueprint(app_crud)
 app.register_blueprint(app_crud_api)
 app.register_blueprint(app_feed)
-
+app.register_blueprint(app_notes)
 
 @app.route('/')
 def index():
@@ -66,6 +67,10 @@ def dictionary():
 @app.route('/main')
 def main():
     return render_template("main.html")
+
+@app.route('/notes')
+def notes():
+    return render_template("notes.html")
 
 @app.route('/feedback/feedback/feedback')
 def thanks():
