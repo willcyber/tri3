@@ -37,7 +37,7 @@ Welcome to our Health and Wellness Website. This website provides various tools 
         <td><a href="https://github.com/willcyber">@willcyber</a></td>
         <td><a href="https://github.com/willcyber/tri3/issues/assigned/willcyber">Tasks</a></td>
         <td><a href="https://github.com/willcyber/tri3/commits?author=willcyber">Commits</a></td>
-         <td>Design Manager</td>
+         <td>Scrum Master / Design Manager</td>
     </tr> 
 
 </table>
