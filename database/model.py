@@ -8,6 +8,70 @@ from flask_login import UserMixin
 
 ''' Tutorial: https://www.sqlalchemy.org/library.html#tutorials, try to get into Python shell and follow along '''
 
+class Feedback(UserMixin, db.Model):
+    # define the Users schema
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255), unique=False, nullable=False)
+    feedback = db.Column(db.String(255), unique=False, nullable=False)
+
+    # constructor of a User object, initializes of instance variables within object
+    def __init__(self, name, feedback):
+        self.name = name
+        self.feedback = feedback
+
+
+    # CRUD create/add a new record to the table
+    # returns self or None on error
+    def create(self):
+        try:
+            # creates a person object from Users(db.Model) class, passes initializers
+            db.session.add(self)  # add prepares to persist person object to Users table
+            db.session.commit()  # SqlAlchemy "unit of work pattern" requires a manual commit
+            return self
+        except IntegrityError:
+            db.session.remove()
+            return None
+
+    # CRUD read converts self to dictionary
+    # returns dictionary
+    def read(self):
+        return {
+            "id": self.userid,
+            "name": self.name,
+            "feedback": self.feedback,
+            "query": "by_alc"  # This is for fun, a little watermark
+        }
+
+    # CRUD update: updates users name, password, phone
+    # returns self
+    def update(self, name, feedback=""):
+        """only updates values with length"""
+        if len(name) > 0:
+            self.name = name
+        if len(feedback) > 0:
+            self.set_password(feedback)
+        db.session.commit()
+        return self
+
+    # CRUD delete: remove self
+    # None
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+        return None
+
+
+"""Database Creation and Testing section"""
+
+
+def model_printer():
+    print("------------")
+    print("Table: users with SQL query")
+    print("------------")
+    result = db.session.execute('select * from users')
+    print(result.keys())
+    for row in result:
+        print(row)
 
 # Define the 'Users Notes' table  with a relationship to Users within the model
 class Notes(db.Model):

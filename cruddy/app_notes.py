@@ -2,7 +2,7 @@ import markdown
 from flask import Blueprint, render_template, request, redirect, url_for
 from flask_login import login_required, current_user
 from cruddy.query import user_by_id
-from cruddy.model import Notes
+from database.model import Notes
 
 # blueprint defaults https://flask.palletsprojects.com/en/2.0.x/api/#blueprint-objects
 app_notes = Blueprint('Notes', __name__,
