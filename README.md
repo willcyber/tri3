@@ -1,6 +1,6 @@
 # Health and Wellness Tri 3
 ## Project Overview
-Welcome to our Health and Wellness Website. This website provides various tools for students in their daily lives through school and their extracurricular activities. We want to make sure this website is interactive and friendly to all users that want a tool that improves their productivity. Our plan is to include varios features including a planner, timer, scheduler, etc. We want to expand this plan with a sponsor and hopefully create a working website that can launched in the future outside of this Computer Science Principles Class. 
+Welcome to our Health and Wellness Website. This website provides various tools for students in their daily lives through school and their extracurricular activities. We want to make sure this website is interactive and friendly to all users that want a tool that improves their productivity. We plan to include various features including a planner, timer, scheduler, etc. We want to expand this plan with a sponsor and hopefully create a working website that can launch in the future outside of this Computer Science Principles Class. 
 ## Project Contributors and Credits
 
 <table>
@@ -43,14 +43,14 @@ Welcome to our Health and Wellness Website. This website provides various tools 
 </table>
 
 ## Project Sponsor
-Our sponsor is a UCSD professor who wants a website that is focued on productivity and wellness of his students.
+Our sponsor is a UCSD professor who wants a website that is focused on the productivity and wellness of his students.
 ### Initial Requirements
-* Some type of planner that allows for more friendly user interface
-* Multiple features that can boost productivty for college students 
+* Some type of planner that allows for a more friendly user interface
+* Multiple features that can boost productivity for college students 
 ### Tangible Plans 
-* Drag and Drog Planner
+* Drag and Drop Planner
 * Standard Planner with User Input
 * Timer 
-* Mathmatics Tool 
+* Mathematics Tool 
 ### Contact Information 
-Sponser Email: jfmobi@gmail.com
+Sponsor Email: jfmobi@gmail.com
