@@ -47,3 +47,39 @@ def create():
         # create a record in the Notes table with the Notes object
         note_object.create()
     return redirect(url_for('Notes.notes'))
+
+@app_notes.route('/read/', methods=["POST"])
+def read():
+    """gets userid from form and obtains corresponding data from Users table"""
+    table = []
+    if request.form:
+        id = request.form.get("id")
+        po = user_by_id(id)
+        if po is not None:
+            table = [po.read()]  # placed in list for easier/consistent use within HTML
+    return render_template("notes.html", table=table)
+
+
+# CRUD update
+@app_notes.route('/update/', methods=["POST"])
+def update():
+    """gets userid and name from form and filters and then data in  Users table"""
+    if request.form:
+        id = request.form.get("id")
+        name = request.form.get("name")
+        po = user_by_id(id)
+        if po is not None:
+            po.update(name)
+    return redirect(url_for('notes.html'))
+
+
+# CRUD delete
+@app_notes.route('/delete/', methods=["POST"])
+def delete():
+    """gets userid from form delete corresponding record from Users table"""
+    if request.form:
+        id = request.form.get("id")
+        po = user_by_id(id)
+        if po is not None:
+            po.delete()
+    return redirect(url_for('notes.html'))
