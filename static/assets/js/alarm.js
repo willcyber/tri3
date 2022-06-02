@@ -1,7 +1,6 @@
 function showAlarm(){
     document.getElementById('alarmMenu').classList.remove('noDisplay');
     document.getElementById('timer').classList.add('noDisplay');
-    document.getElementById('stopwatch').classList.add('noDisplay');
 }
 
 function newAlarm(){

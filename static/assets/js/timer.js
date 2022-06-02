@@ -1,14 +1,11 @@
 function showTimer(){
     document.getElementById('timer').classList.remove('noDisplay');
     document.getElementById('alarmMenu').classList.add('noDisplay');
-    document.getElementById('stopwatch').classList.add('noDisplay');
 }
 
 function closeSubTimers(){
     document.getElementById('timer').classList.add('noDisplay');
     document.getElementById('alarmMenu').classList.add('noDisplay');
-    document.getElementById('stopwatch').classList.add('noDisplay');
-
 }
 
 function timerHourCheck(){

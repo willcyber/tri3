@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Study Tools | Timer</title>
+    <title>Clock</title>
     <meta charset="UTF-8">
     <script type="text/javascript" src="/static/assets/js/timer.js"></script> <!-- Import timer JS -->
     <script type="text/javascript" src="/static/assets/js/alarm.js"></script> <!-- Import alarm JS -->
-    <script type="text/javascript" src="/static/assets/js/stopwatch.js"></script> <!-- Import stopwatch JS -->
     <script type="text/javascript" src="/static/assets/js/clock.js"></script> <!-- Import clock JS -->
     <link rel="stylesheet" href="{{url_for('static', filename='/assets/css/clockApp.css') }}"> <!-- Import CSS -->
 
@@ -35,8 +34,6 @@
             <tr>
                 <td><button class="buttonTimer" onclick="showAlarm()">Alarm</button></td>
                 <td><button class="buttonTimer" onclick="showTimer()">Timer</button></td>
-                <td><button class="buttonTimer" onclick="showStopwatch()">Stopwatch</button></td>
-
             </tr>
         </table>
     </div>
@@ -112,28 +109,6 @@
             </tr>
         </table>
     </div>
-
-    <!-- Stopwatch -->
-    <div class="subTimer noDisplay" id="stopwatch">
-        <i class="fa-solid fa-square-xmark fa-2xl" onclick="closeSubTimers()"></i>
-        <table style="font-size:30px;">
-            <tr id="stopwatchDisplay">
-                <td><span id="stopwatchHour">00</span></td><td></td>
-                <td><span>:</span></td><td></td>
-                <td><span id="stopwatchMinute">00</span></td><td></td>
-                <td><span>:</span></td><td></td>
-                <td><span id="stopwatchSecond">00</span></td><td></td>
-            </tr>
-            <tr class="noDisplay" id="stopwatchIsSet">
-                <td colspan="7"><button class="buttonTimer" style="font-size:18px;" onclick="pauseStopwatch();">Pause</button></td>
-                <td colspan="7"><button class="buttonTimer" style="font-size:18px;" onclick="resetStopwatch();">Reset</button></td>
-            </tr>
-            <tr id="stopwatchNotSet">
-                <td colspan="14"><button class="buttonTimer" style="font-size:18px;" onclick="startStopwatch();">Start</button></td>
-            </tr>
-        </table>
-    </div>
-
 
 {% endblock %}
 </body>
